@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Cache-Plosion Help & Support — Microplosion Labs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Help and support for Cache-Plosion (Total Cache Cleaner Pro) by Microplosion Labs. Learn how to use the app, required permissions, ad-free options, referrals, and troubleshooting tips.">
+
+  <!-- Canonical (update to your real URL if different) -->
+  <link rel="canonical" href="https://microplosion.github.io/help.html">
+
+  <!-- Basic styling -->
+  <style>
+    :root {
+      --bg: #050814;
+      --bg-card: #101522;
+      --accent: #31d4ff;
+      --accent-soft: rgba(49, 212, 255, 0.15);
+      --text: #f7f8ff;
+      --muted: #a7b0c5;
+      --danger: #ff5c7a;
+      --radius-lg: 18px;
+      --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.45);
+      --max-width: 960px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #161b2b 0, var(--bg) 45%, #020309 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to right, rgba(3, 11, 25, 0.9), rgba(8, 19, 40, 0.9));
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffffff 0, #31d4ff 12%, #004aff 40%, #050814 100%);
+      box-shadow: 0 0 18px rgba(49, 212, 255, 0.7);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .header-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .chip-link {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(4, 10, 22, 0.8);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .chip-link span.icon-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 24px auto 40px;
+      padding: 0 16px 32px;
+    }
+
+    .hero {
+      background: radial-gradient(circle at top left, var(--accent-soft), rgba(5, 8, 20, 0.9));
+      border-radius: 28px;
+      padding: 20px 18px 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(3, 13, 32, 0.9);
+      border: 1px solid rgba(49, 212, 255, 0.4);
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #46ffb3;
+      box-shadow: 0 0 10px rgba(70, 255, 179, 0.8);
+    }
+
+    .hero-title {
+      font-size: 24px;
+      margin: 0 0 4px;
+    }
+
+    .hero-subtitle {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .hero-col {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .hero-list li {
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+    }
+
+    .hero-list li span.bullet {
+      margin-top: 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(49, 212, 255, 0.9);
+      flex-shrink: 0;
+    }
+
+    .hero-highlight {
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(6, 16, 39, 0.95), rgba(3, 7, 18, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 14px 13px;
+      font-size: 12px;
+      color: var(--muted);
+      display: grid;
+      gap: 6px;
+    }
+
+    .hero-highlight strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero-pulse {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(49, 212, 255, 0.25), transparent 70%);
+      top: -80px;
+      right: -60px;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .section {
+      margin-top: 24px;
+      background: rgba(5, 10, 25, 0.95);
+      border-radius: var(--radius-lg);
+      padding: 16px 14px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section + .section {
+      margin-top: 18px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .section-tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .section p {
+      margin: 6px 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .steps-list {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .steps-list li {
+      margin-bottom: 4px;
+    }
+
+    .callout {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(10, 26, 58, 0.9);
+      border: 1px solid rgba(49, 212, 255, 0.35);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .permissions-grid {
+      display: grid;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .perm-card {
+      border-radius: 14px;
+      background: rgba(7, 14, 32, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 10px 10px;
+      font-size: 13px;
+    }
+
+    .perm-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .perm-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+
+    details {
+      margin-top: 6px;
+      background: rgba(4, 10, 26, 0.95);
+      border-radius: 12px;
+      padding: 8px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    details summary {
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      list-style: none;
+    }
+
+    details[open] summary {
+      color: var(--accent);
+    }
+
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-list {
+      margin: 6px 0 0;
+      padding: 0;
+      list-style: none;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .faq-list li {
+      margin-bottom: 4px;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: #fdfdff;
+    }
+
+    .badge-danger {
+      color: var(--danger);
+      font-weight: 500;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 14px 16px 24px;
+      background: rgba(0, 0, 0, 0.6);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+    }
+
+    @media (max-width: 720px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .section {
+        padding: 14px 12px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-icon" aria-hidden="true"></div>
+      <div class="brand-text">
+        <div class="brand-title">Cache-Plosion</div>
+        <div class="brand-sub">Total Cache Cleaner Pro · Microplosion Labs</div>
+      </div>
+    </div>
+    <nav class="header-links" aria-label="Help navigation">
+      <a href="#getting-started" class="chip-link">
+        <span class="icon-dot"></span>
+        Getting started
+      </a>
+      <a href="#permissions" class="chip-link">
+        <span class="icon-dot"></span>
+        Permissions
+      </a>
+      <a href="#ads-referrals" class="chip-link">
+        <span class="icon-dot"></span>
+        Ads & Ad-Free
+      </a>
+      <a href="#faq" class="chip-link">
+        <span class="icon-dot"></span>
+        FAQ
+      </a>
+      <a href="#contact" class="chip-link">
+        <span class="icon-dot"></span>
+        Contact
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-pulse" aria-hidden="true"></div>
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Cache-Plosion Help Center
+      <span style="opacity:.6">· Android only</span>
+    </div>
+    <h1 class="hero-title" id="hero-title">Need help with Cache-Plosion?</h1>
+    <p class="hero-subtitle">
+      This page explains how Cache-Plosion works, why it needs certain permissions,
+      and how to fix the most common issues in just a few taps.
+    </p>
+    <div class="hero-grid">
+      <div class="hero-col">
+        <ul class="hero-list">
+          <li>
+            <span class="bullet"></span>
+            <span><strong>Tap once · Clean many apps</strong> — Cache-Plosion opens each app’s system settings and taps “Clear cache” for you.</span>
+          </li>
+          <li>
+            <span class="bullet"></span>
+            <span><strong>No root required</strong> — it uses official Android screens like <em>App info → Storage &amp; cache → Clear cache</em>.</span>
+          </li>
+          <li>
+            <span class="bullet"></span>
+            <span><strong>Privacy-first</strong> — Cache-Plosion does <em>not</em> read your messages, photos, or personal content.</span>
+          </li>
+          <li>
+            <span class="bullet"></span>
+            <span><strong>Ad-free options</strong> — unlock lifetime ad-free or earn ad-free time from referrals (if enabled in your version).</span>
+          </li>
+        </ul>
+      </div>
+      <div class="hero-col">
+        <div class="hero-highlight">
+          <div><strong>Quick start:</strong></div>
+          <div>1. Open Cache-Plosion</div>
+          <div>2. Follow the permission checklist</div>
+          <div>3. Tap <em>Scan &amp; Clean</em> / <em>Clear all cache</em></div>
+          <div>4. Watch the apps open one by one while Cache-Plosion taps “Clear cache” automatically</div>
+          <div class="callout">
+            If something isn’t working, scroll down to
+            <a href="#troubleshooting">Troubleshooting</a> for quick fixes.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Getting started -->
+  <section class="section" id="getting-started">
+    <div class="section-header">
+      <h2 class="section-title">1. Getting started</h2>
+      <div class="section-tag">Setup guide</div>
+    </div>
+    <p>Once you install Cache-Plosion on your Android device, follow these steps so the cleaner can run smoothly:</p>
+    <ol class="steps-list">
+      <li><strong>Open Cache-Plosion</strong> from your app drawer or home screen.</li>
+      <li>On the first screen, review the <strong>permissions checklist</strong> and tap each item to enable it.</li>
+      <li>After permissions are granted, you’ll see the <strong>dashboard</strong> with your storage summary and cleaning options.</li>
+      <li>Tap <strong>Scan</strong> or <strong>Clear all cache</strong> (depending on your version) to start the automated clean.</li>
+      <li>Let Cache-Plosion drive: you’ll see Android’s <em>App info</em> and <em>Storage &amp; cache</em> screens as the app taps <strong>“Clear cache”</strong> for each selected app.</li>
+    </ol>
+    <div class="callout">
+      <strong>Tip:</strong> Keep your phone unlocked and don’t tap other buttons while Cache-Plosion is cleaning.
+      If you need to stop, use the on-screen pause/stop controls provided by the app (if shown).
+    </div>
+  </section>
+
+  <!-- Permissions -->
+  <section class="section" id="permissions">
+    <div class="section-header">
+      <h2 class="section-title">2. Why Cache-Plosion needs these permissions</h2>
+      <div class="section-tag">Transparency</div>
+    </div>
+    <p>
+      Cache-Plosion uses only the permissions it needs to find apps and trigger the official
+      <em>Clear cache</em> buttons in Android’s own settings. It does <strong>not</strong> read your conversations,
+      photos, or private content.
+    </p>
+
+    <div class="permissions-grid">
+      <div class="perm-card">
+        <div class="perm-label">Required</div>
+        <div class="perm-title">Accessibility Service</div>
+        <p>
+          Used to <strong>tap</strong> buttons like “Storage &amp; cache” and “Clear cache” on your behalf
+          on the official Android settings screens.
+        </p>
+        <ul class="steps-list">
+          <li>Go to <em>Settings → Accessibility → Installed services</em>.</li>
+          <li>Find <strong>Cache-Plosion</strong> and turn it <strong>On</strong>.</li>
+          <li>Confirm the prompt to allow it to perform these actions.</li>
+        </ul>
+      </div>
+
+      <div class="perm-card">
+        <div class="perm-label">Required</div>
+        <div class="perm-title">Usage access / App usage</div>
+        <p>
+          Used to detect which apps are installed and how much cache they are using (where available),
+          so Cache-Plosion knows which apps to open in Settings.
+        </p>
+        <ul class="steps-list">
+          <li>Go to <em>Settings → Apps → Special access → Usage access</em>.</li>
+          <li>Tap <strong>Cache-Plosion</strong> and enable <em>Allow usage access</em>.</li>
+        </ul>
+      </div>
+
+      <div class="perm-card">
+        <div class="perm-label">Optional</div>
+        <div class="perm-title">Notifications</div>
+        <p>
+          Used to show progress, results, and tips (for example, how much storage was freed after a clean).
+        </p>
+        <p>
+          If you turn notifications off, the cleaner will still work, but you might not see helpful alerts.
+        </p>
+      </div>
+
+      <div class="perm-card">
+        <div class="perm-label">Optional</div>
+        <div class="perm-title">Network / Internet</div>
+        <p>
+          Used only for:
+        </p>
+        <ul class="steps-list">
+          <li>Displaying ads (free version)</li>
+          <li>Checking purchases and referral rewards (ad-free options)</li>
+          <li>Basic anonymous analytics or update checks (if enabled in your version)</li>
+        </ul>
+        <p>
+          Cache-Plosion is designed to be <strong>privacy-first</strong> and does not sell your personal data.
+        </p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Reminder:</strong> If any permission is turned off later, the automation may stop working.
+      You can always reopen Cache-Plosion to re-run the permission checklist.
+    </div>
+  </section>
+
+  <!-- Using the cleaner -->
+  <section class="section" id="using-cleaner">
+    <div class="section-header">
+      <h2 class="section-title">3. How the cleaning process works</h2>
+      <div class="section-tag">Behind the scenes</div>
+    </div>
+    <p>
+      Cache-Plosion doesn’t hack or modify your system. It simply speeds up what you could do manually:
+      opening each app’s settings and tapping “Clear cache”.
+    </p>
+    <ol class="steps-list">
+      <li>You tap <strong>Clear all cache</strong> (or similar) inside Cache-Plosion.</li>
+      <li>The app selects a list of installed apps that are safe to cache-clean.</li>
+      <li>For each app, Cache-Plosion opens that app’s <em>App info</em> screen.</li>
+      <li>Using Accessibility, it taps <strong>“Storage &amp; cache”</strong> and then <strong>“Clear cache”</strong>.</li>
+      <li>When the sequence is done, you see a summary of how much space was freed.</li>
+    </ol>
+    <div class="callout">
+      <strong>Important:</strong> Cache-Plosion does <span class="badge-danger">not</span> tap
+      “Clear storage” or “Clear data” for your apps. It focuses on <strong>cache</strong>, so your
+      logins and app data stay safe.
+    </div>
+  </section>
+
+  <!-- Ads & Ad-Free -->
+  <section class="section" id="ads-referrals">
+    <div class="section-header">
+      <h2 class="section-title">4. Ads, ad-free unlock, and referrals</h2>
+      <div class="section-tag">Monetization & rewards</div>
+    </div>
+    <p>
+      Cache-Plosion may show ads in the free version to help support development. In some versions,
+      you’ll see options for <strong>lifetime ad-free</strong> or <strong>referral-based ad-free time</strong>.
+    </p>
+
+    <details>
+      <summary>Lifetime ad-free unlock (one-time purchase)</summary>
+      <div class="faq-list">
+        <p>
+          If your version of Cache-Plosion offers a one-time unlock, you can pay once to remove ads permanently.
+        </p>
+        <ul class="steps-list">
+          <li>Open Cache-Plosion and go to <strong>Settings</strong> or the <strong>Go Ad-Free</strong> section.</li>
+          <li>Tap <strong>Unlock lifetime ad-free</strong>.</li>
+          <li>Confirm the purchase with your Google Play account.</li>
+          <li>Once confirmed, ads are removed for that Google account on this app.</li>
+        </ul>
+        <p>
+          Purchases are handled securely by <strong>Google Play Billing</strong>. Cache-Plosion does not store your
+          card details.
+        </p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Referral rewards (earn ad-free time)</summary>
+      <div class="faq-list">
+        <p>
+          You may see a referral feature where sharing Cache-Plosion with friends gives you
+          <strong>ad-free time</strong> as a reward (for example, 2 weeks ad-free per successful referral).
+        </p>
+        <ul class="steps-list">
+          <li>Open Cache-Plosion and find the <strong>Invite friends</strong> or <strong>Referral</strong> option.</li>
+          <li>Share your unique link with friends.</li>
+          <li>When a friend installs and opens the app from your link, your ad-free timer increases.</li>
+        </ul>
+        <p>
+          Exact reward amounts and rules may vary by version or region, but the idea is simple:
+          <strong>the more friends you help, the less ads you see.</strong>
+        </p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Do ads affect cleaning performance?</summary>
+      <div class="faq-list">
+        <p>
+          No. Ads do not change how Cache-Plosion cleans. They may appear:
+        </p>
+        <ul class="steps-list">
+          <li>On the dashboard</li>
+          <li>Before or after a cleaning session</li>
+        </ul>
+        <p>
+          The cleaning engine itself stays the same in both the free and ad-free versions.
+        </p>
+      </div>
+    </details>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="section-header">
+      <h2 class="section-title">5. Frequently asked questions</h2>
+      <div class="section-tag">FAQ</div>
+    </div>
+
+    <details open>
+      <summary>Why do I still see cache after cleaning?</summary>
+      <div class="faq-list">
+        <p>
+          Some apps quickly rebuild their cache the next time you open them. This is normal Android behavior and not
+          a problem with Cache-Plosion. The cleaner did clear the cache — it’s just being rebuilt as the app runs.
+        </p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Does Cache-Plosion delete my photos, messages, or accounts?</summary>
+      <div class="faq-list">
+        <p>
+          No. Cache-Plosion focuses on <strong>temporary cache files</strong>. It does not delete your photos, videos,
+          contacts, SMS, or login accounts. It does <span class="badge-danger">not</span> tap “Clear storage” or
+          “Clear data”.
+        </p>
+      </div>
+    </details>
+
+    <details>
+      <summary>The app stopped cleaning automatically. What happened?</summary>
+      <div class="faq-list">
+        <p>Most of the time this means a permission was turned off by the system or a phone update.</p>
+        <ul class="steps-list">
+          <li>Reopen Cache-Plosion and check the permission checklist.</li>
+          <li>Make sure <strong>Accessibility</strong> and <strong>Usage access</strong> are still enabled.</li>
+          <li>If you use a battery saver, allow Cache-Plosion to run without being put to sleep.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>Is Cache-Plosion safe to use?</summary>
+      <div class="faq-list">
+        <p>
+          Cache-Plosion uses official Android screens and buttons. It does not perform hidden system modifications or require root.
+          You always see what the app is doing as it opens settings and taps “Clear cache”.
+        </p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Does Cache-Plosion work on iPhone (iOS)?</summary>
+      <div class="faq-list">
+        <p>
+          Cache-Plosion is currently designed for <strong>Android devices only</strong>.
+          iOS does not allow third-party apps to clear other apps’ cache in the same way.
+        </p>
+      </div>
+    </details>
+  </section>
+
+  <!-- Troubleshooting -->
+  <section class="section" id="troubleshooting">
+    <div class="section-header">
+      <h2 class="section-title">6. Quick troubleshooting checklist</h2>
+      <div class="section-tag">Fix common issues</div>
+    </div>
+    <p>If something isn’t working, run through these quick checks:</p>
+    <ol class="steps-list">
+      <li><strong>Permissions:</strong> Reopen Cache-Plosion and confirm all required permissions are enabled.</li>
+      <li><strong>Accessibility reset:</strong> Turn the Accessibility service off and back on for Cache-Plosion.</li>
+      <li><strong>Reboot:</strong> Restart your phone and try a clean again.</li>
+      <li><strong>Update:</strong> Make sure you’re using the latest version from Google Play.</li>
+      <li><strong>Battery saver:</strong> Allow Cache-Plosion to run without aggressive background limits.</li>
+    </ol>
+    <div class="callout">
+      If you still have issues after these steps, please contact support with your device model, Android version,
+      and a short description of what happens. This helps us improve Cache-Plosion for everyone.
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="section-header">
+      <h2 class="section-title">7. Contact & feedback</h2>
+      <div class="section-tag">Support</div>
+    </div>
+    <p>
+      If you need help, found a bug, or have an idea to make Cache-Plosion even better, we’d love to hear from you.
+    </p>
+    <ul class="steps-list">
+      <li><strong>Email support:</strong> <a href="mailto:drdizzle613@proton.me">drdizzle613@proton.me</a></li>
+      <li>Mention your <strong>device brand</strong>, <strong>model</strong>, and <strong>Android version</strong> if it’s a technical issue.</li>
+      <li>If possible, include a short description of what you were doing when the issue happened.</li>
+    </ul>
+    <div class="callout">
+      <strong>Thank you</strong> for using Cache-Plosion and supporting Microplosion Labs. Every review, referral,
+      and suggestion helps this app grow.
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>© <span id="year"></span> Microplosion Labs. Cache-Plosion — Total Cache Cleaner Pro.</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="help.html">Help &amp; Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="https://play.google.com/store" target="_blank" rel="noopener">Get the app on Google Play</a>
+    </div>
+    <div>
+      Cache-Plosion is an independent Android utility created by Microplosion Labs. Not affiliated with
+      Google, Samsung, or any device manufacturer.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Simple year auto-update
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
