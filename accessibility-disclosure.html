@@ -21,43 +21,63 @@
 
   <h2>Purpose of the Accessibility Service</h2>
   <p>
-    The Accessibility Service is used solely to automate cache-clearing actions within the Android Settings app. 
-    It helps users by navigating to each selected app’s storage page and performing the “Clear cache” action on their behalf — 
-    exactly as if the user tapped the button manually. All actions are initiated by the user and limited only to cache cleaning.
+    The Accessibility Service is used <strong>only</strong> to automate cache-clearing steps inside the Android Settings app.
+    The service helps users by navigating to each selected app’s storage page and performing the
+    <strong>“Clear cache”</strong> action — exactly as if the user tapped the button manually.
+    All actions are <strong>user-initiated</strong>, require explicit user permission, and only occur during a cleaning session
+    started by the user.
   </p>
 
   <h2>Data Handling & Privacy</h2>
   <ul>
-    <li>The service does <strong>not</strong> read or collect screen content, text, keystrokes, passwords, messages, or any personal data.</li>
+    <li>The Accessibility Service does <strong>not</strong> read or collect screen content, text, keystrokes, passwords, messages, browsing activity, or the contents of other apps.</li>
     <li>No input data, personal data, or sensitive information is captured, logged, stored, or transmitted.</li>
-    <li>All automation and interactions occur entirely on the user’s device and never leave the device.</li>
-    <li>The service performs no background monitoring or tracking.</li>
+    <li>All automation actions happen <strong>entirely on the user’s device</strong> and never leave the device.</li>
+    <li>The service performs <strong>no background monitoring</strong>, tracking, or analytics.</li>
+    <li>The service never modifies system settings beyond tapping the "Clear cache" button.</li>
   </ul>
 
   <h2>User Consent & Control</h2>
   <p>
-    The user must manually enable the Accessibility Service from Android’s system settings before it can operate. 
-    The service runs only while the user has explicitly granted permission and may be disabled at any time in the device’s Accessibility settings.
+    Cache-Plosion requires the user to manually enable the Accessibility Service inside the device’s system settings.
+    The service is <strong>fully optional</strong> and can be turned off at any time in Accessibility settings.
+    It operates only while the user has granted permission and only during active cleaning initiated by the user.
   </p>
+
+  <h2>Additional Required Permissions</h2>
+  <ul>
+    <li>
+      <strong>Usage Access</strong> – used only to display the list of installed apps so users can choose which caches to clear.
+    </li>
+    <li>
+      <strong>QUERY_ALL_PACKAGES</strong> – used solely to show the full list of installed apps for cleaning selection.
+      This permission is <strong>not</strong> used for analytics, advertising, tracking, profiling, or any unrelated purpose.
+      No app information is uploaded or shared.
+    </li>
+    <li>
+      <strong>Internet Access</strong> – used only to load ads (if applicable). No browsing activity is inspected or collected.
+    </li>
+  </ul>
 
   <h2>Compliance & Transparency</h2>
   <p>
-    This Accessibility Service complies with 
+    This Accessibility Service complies fully with
     <a href="https://support.google.com/googleplay/android-developer/answer/10964491" target="_blank" rel="noopener noreferrer">
       Google Play’s Accessibility Policy
     </a>.
-    It exists exclusively to support the core functionality of Cache-Plosion: helping users clear cached data faster.
   </p>
   <p>
-    The service does <strong>not</strong> alter other device settings, perform actions outside the stated purpose, or access unrelated apps or data.
+    It exists exclusively to support the app’s core functionality:
+    <strong>helping users clear cached data safely and efficiently.</strong>
+    It does <strong>not</strong> perform actions outside this stated purpose and does <strong>not</strong> access unrelated apps or data.
   </p>
 
-  <h2>Video Demonstration</h2>
+  <h2>Transparency Video</h2>
   <p>
-    To meet Google Play’s transparency requirements, a short demonstration video shows exactly how Cache-Plosion uses the Accessibility Service safely and correctly.
+    To meet Google Play’s disclosure requirements, a demonstration video shows exactly how Cache-Plosion uses the Accessibility Service.
     <br><br>
     <a href="https://youtu.be/PfpwTNp1Vc4" target="_blank" rel="noopener">
-      ▶ Watch the Accessibility Service Disclosure Video on YouTube
+      ▶ Watch the Accessibility Service Disclosure Video
     </a>
   </p>
 
