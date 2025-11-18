@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QUERY_ALL_PACKAGES Disclosure – Microplosion Labs</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 880px; margin: 40px auto; line-height: 1.6; padding: 0 16px; color: #222; }
+    h1 { color: #0b5dff; }
+    h2 { margin-top: 28px; color: #0a4ed1; }
+    a { color: #0b5dff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer { margin-top: 40px; color: #666; }
+  </style>
+</head>
+<body>
+
+  <h1>QUERY_ALL_PACKAGES Permission Disclosure</h1>
+
+  <p><strong>App name:</strong> Cache-Plosion (Total Cache Cleaner Pro)</p>
+  <p><strong>Developer:</strong> Microplosion Labs</p>
+
+  <h2>Why This Permission Is Required</h2>
+  <p>
+    Cache-Plosion uses the Android permission
+    <strong>QUERY_ALL_PACKAGES</strong> for a single, core purpose:
+  </p>
+
+  <p><strong>To display the full list of installed apps so the user can choose which app caches to clean.</strong></p>
+
+  <p>
+    Cache cleaning requires the ability to show installed applications, navigate to their settings page,
+    and automate the “Clear cache” button when the user initiates the action. Without knowing which apps are installed,
+    this functionality is not possible.
+  </p>
+
+  <h2>How the Permission Is Used</h2>
+  <ul>
+    <li>To load a complete list of installed apps (both user and system apps).</li>
+    <li>To display storage and cache usage for apps you select.</li>
+    <li>To allow you to choose which apps to clean during a user-initiated cleaning session.</li>
+  </ul>
+
+  <p>Cache-Plosion does <strong>not</strong> use this permission for anything else.</p>
+
+  <h2>What the Permission Is <em>Not</em> Used For</h2>
+  <p>This permission is <strong>not</strong> used for:</p>
+
+  <ul>
+    <li>Advertising targeting</li>
+    <li>Analytics or data collection</li>
+    <li>Tracking users or devices</li>
+    <li>Profiling or monitoring behavior</li>
+    <li>Reading data from other apps</li>
+    <li>Accessing private files, messages, photos, or media</li>
+  </ul>
+
+  <p>
+    The app does <strong>not</strong> upload your installed app list or device information to Microplosion Labs servers.
+    All processing happens <strong>locally on your device</strong>.
+  </p>
+
+  <h2>Data Handling & Privacy</h2>
+  <ul>
+    <li>No app data, lists, or identifiers are transmitted off the device.</li>
+    <li>No analytics SDKs collect information about which apps you have installed.</li>
+    <li>No personal or sensitive data is accessed, stored, or shared.</li>
+    <li>The permission is used only in combination with user-initiated cache cleaning.</li>
+  </ul>
+
+  <p>
+    For more details, see our
+    <a href="https://microplosion.github.io/privacy-policy.html">Privacy Policy</a>.
+  </p>
+
+  <h2>Google Play Policy Compliance</h2>
+  <p>
+    This permission is requested strictly under Google Play’s
+    <strong>“Core Functionality”</strong> requirement for apps that need visibility of installed apps.
+    Cache-Plosion cannot perform its primary function (cache cleaning) without showing the user a complete list of apps.
+  </p>
+
+  <footer>
+    © 2025 Microplosion Labs ·
+    <a href="https://microplosion.github.io/privacy-policy.html">Privacy Policy</a> ·
+    <a href="mailto:drdizzle613@proton.me">Contact Support</a>
+  </footer>
+
+</body>
+</html>
