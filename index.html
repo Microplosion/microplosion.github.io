@@ -30,12 +30,16 @@
   <style>
     :root { --text:#222; --muted:#555; --link:#3366cc; --maxw:720px; }
     html,body{margin:0;padding:0}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;color:var(--text);line-height:1.6;max-width:var(--maxw);margin:2rem auto;padding:1rem;background:#fff}
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
+      color:var(--text);line-height:1.6;max-width:var(--maxw);
+      margin:2rem auto;padding:1rem;background:#fff
+    }
     header{text-align:center;margin-top:1.5rem}
     header img{width:130px;height:auto;margin-bottom:.75rem;border-radius:12px}
     header h1{margin:.25rem 0 .5rem}
     header p.lead{margin:0 auto 1.25rem;color:var(--muted);max-width:48ch}
-    nav{text-align:center;margin-bottom:1.5rem}
+    nav{text-align:center;margin-bottom:1.5rem; line-height: 2;}
     nav a{color:var(--link);text-decoration:none;margin:0 .5rem}
     nav a:hover{text-decoration:underline}
     h2{margin-top:2rem}
@@ -67,18 +71,23 @@
     <p class="lead">Privacy-focused Android utilities. Creator of <strong>Cache-Plosion (Total Cache Cleaner Pro)</strong>.</p>
   </header>
 
+  <!-- 🔗 Updated Navigation With ALL Pages -->
   <nav aria-label="Site links">
     <a href="/privacy-policy.html">Privacy Policy</a>
-    <a href="/accessibility-disclosure.html">Accessibility Service Disclosure</a>
+    <a href="/accessibility-disclosure.html">Accessibility Disclosure</a>
+    <a href="/query-all-packages-disclosure.html">QUERY_ALL_PACKAGES Disclosure</a>
     <a href="/help.html">Help &amp; Support</a>
+    <a href="/help-permissions.html">Permissions Help</a>
+    <a href="/support.html">Contact Support</a>
+    <a href="/terms.html">Terms of Use</a>
   </nav>
 
   <h2>About Microplosion Labs</h2>
   <p>Microplosion Labs builds small, fast, privacy-focused Android utilities. Our apps avoid unnecessary data collection, use minimal permissions, and focus on clear user value.</p>
   <ul>
-    <li><strong>Privacy-first:</strong> no personal or sensitive data is collected or stored; standard ad identifiers may be used by ad networks as described in our Privacy Policy.</li>
+    <li><strong>Privacy-first:</strong> no personal or sensitive data is collected or stored.</li>
     <li><strong>Performance-focused:</strong> lightweight builds with low battery impact.</li>
-    <li><strong>Policy-compliant:</strong> built to meet Google Play policies with clear disclosures for Accessibility, permissions, and data handling.</li>
+    <li><strong>Policy-compliant:</strong> clear disclosures for Accessibility, permissions, and data handling.</li>
   </ul>
 
   <hr>
@@ -86,17 +95,17 @@
   <h2>Cache-Plosion (Total Cache Cleaner Pro)</h2>
   <p>
     Cache-Plosion is a lightweight cache cleaner that helps free up storage by clearing cached data from your installed apps.
-    It uses the Android Accessibility Service only to automate “Clear cache” actions that <strong>you</strong> initiate, and it does not read the contents of your apps, your screen, or your personal files.
+    It uses the Android Accessibility Service only to automate “Clear cache” actions that <strong>you</strong> initiate, and it does not read the contents of your apps, your screen, or personal files.
   </p>
 
   <ul>
-    <li><strong>Deep cache cleaning:</strong> guides the Accessibility Service through app settings screens to tap “Storage &amp; cache” and “Clear cache” on your behalf.</li>
-    <li><strong>No root required:</strong> works on standard Android devices without root access.</li>
-    <li><strong>Fully user-driven:</strong> cleaning runs only when you start it, and you can stop it at any time.</li>
+    <li><strong>Deep cache cleaning:</strong> Automates “Storage &amp; cache → Clear cache”.</li>
+    <li><strong>No root required:</strong> Works on all standard Android devices.</li>
+    <li><strong>User-controlled:</strong> Cleaning runs only when you start it.</li>
   </ul>
 
   <p>
-    For full details on how the Accessibility Service is used, what is and isn’t accessed, and how you stay in control, see our
+    For full technical details, see our
     <a href="/accessibility-disclosure.html">Accessibility Service Disclosure</a>.
   </p>
 
@@ -110,19 +119,24 @@
   <hr>
 
   <h2>Support &amp; Contact</h2>
-  <p>If you have questions about Cache-Plosion, Accessibility usage, or privacy, you can reach the developer directly.</p>
+  <p>If you have questions about Cache-Plosion, permissions, or privacy, you can reach the developer directly.</p>
   <div class="contact">
     <p>Email: <a href="mailto:drdizzle613@proton.me">drdizzle613@proton.me</a></p>
-    <p>When writing, you can optionally include your device model and Android version to help troubleshoot issues.</p>
+    <p>You may include your device model and Android version for faster support.</p>
   </div>
 
   <footer>
     <p>&copy; <span id="year"></span> Microplosion Labs. All rights reserved.</p>
+    <p>
+      <a href="/privacy-policy.html">Privacy Policy</a> ·
+      <a href="/accessibility-disclosure.html">Accessibility Disclosure</a> ·
+      <a href="/query-all-packages-disclosure.html">Package Visibility Disclosure</a> ·
+      <a href="/terms.html">Terms</a>
+    </p>
     <p>This site is for information and support only. Google Play and Android are trademarks of Google LLC.</p>
   </footer>
 
   <script>
-    // Simple current-year helper
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
