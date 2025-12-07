@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anti-Stalker Radar – Behavioral Stalkerware Detection Overview</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description"
+          content="High-level technical overview of Anti-Stalker Radar, a behavioral and attribution-based framework for detecting covert mobile surveillance and stalkerware.">
+
+    <!-- This is a private technical overview, not meant for indexing -->
+    <meta name="robots" content="noindex,nofollow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Anti-Stalker Radar – Behavioral Stalkerware Detection Overview">
+    <meta property="og:description"
+          content="High-level technical overview of a behavioral, attribution-based framework for detecting covert mobile surveillance and stalkerware.">
+    <meta property="og:type" content="website">
+
+    <style>
+        :root {
+            --bg: #050712;
+            --bg-alt: #0b0f1c;
+            --card: #111625;
+            --accent: #4fd1c5;
+            --accent-soft: rgba(79, 209, 197, 0.08);
+            --text: #e5e7eb;
+            --text-muted: #9ca3af;
+            --border-subtle: rgba(148, 163, 184, 0.25);
+            --danger: #f97373;
+            --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: radial-gradient(circle at top, #10172a 0, #020617 45%, #000 100%);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 32px 16px 64px;
+        }
+
+        @media (min-width: 768px) {
+            .page {
+                padding: 40px 24px 80px;
+            }
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .badge {
+            border-radius: 999px;
+            padding: 4px 10px;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 12px rgba(79, 209, 197, 0.9);
+        }
+
+        .badge-danger {
+            border-color: rgba(248, 113, 113, 0.7);
+            color: #fecaca;
+        }
+
+        .badge-dot-danger {
+            background: var(--danger);
+            box-shadow: 0 0 12px rgba(248, 113, 113, 0.9);
+        }
+
+        header.hero {
+            margin-bottom: 32px;
+        }
+
+        .super-title {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .hero-title {
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 650;
+            line-height: 1.2;
+            margin: 0 0 12px;
+        }
+
+        .hero-subtitle {
+            max-width: 720px;
+            font-size: 15px;
+            color: var(--text-muted);
+            margin: 0 0 12px;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .hero-meta strong {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 880px) {
+            .grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .card {
+            background: radial-gradient(circle at top left, rgba(79, 209, 197, 0.06), transparent 55%),
+                        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.04), transparent 50%),
+                        var(--card);
+            border-radius: 18px;
+            padding: 18px 18px 16px;
+            border: 1px solid var(--border-subtle);
+            box-shadow:
+                0 18px 45px rgba(15, 23, 42, 0.9),
+                0 0 0 1px rgba(15, 23, 42, 0.8) inset;
+        }
+
+        .card-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .pill {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.6);
+            color: var(--text-muted);
+        }
+
+        h2 {
+            font-size: 17px;
+            margin: 26px 0 10px;
+        }
+
+        h3 {
+            font-size: 14px;
+            margin: 18px 0 6px;
+        }
+
+        p {
+            font-size: 14px;
+            margin: 4px 0 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 4px 0 10px;
+        }
+
+        li {
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .tag {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(51, 65, 85, 0.9);
+            color: var(--text-muted);
+        }
+
+        .code-chip {
+            font-family: var(--mono);
+            font-size: 11px;
+            padding: 3px 7px;
+            border-radius: 6px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            display: inline-block;
+            margin: 2px 0;
+        }
+
+        .callout {
+            font-size: 13px;
+            border-radius: 12px;
+            padding: 10px 10px 9px;
+            background: radial-gradient(circle at top left, rgba(79, 209, 197, 0.08), transparent 50%),
+                        rgba(15, 23, 42, 0.96);
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            margin-top: 8px;
+        }
+
+        .callout strong {
+            color: var(--accent);
+        }
+
+        .mini-section {
+            margin-top: 10px;
+        }
+
+        .layout-grid {
+            display: grid;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        @media (min-width: 720px) {
+            .layout-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        .layout-card {
+            border-radius: 14px;
+            padding: 10px 10px 8px;
+            background: rgba(15, 23, 42, 0.96);
+            border: 1px solid rgba(31, 41, 55, 0.9);
+            font-size: 13px;
+        }
+
+        .layout-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .layout-body {
+            font-size: 13px;
+            color: var(--text);
+        }
+
+        .layout-arrow {
+            text-align: center;
+            font-size: 18px;
+            color: var(--accent);
+            margin: 4px 0;
+        }
+
+        footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(31, 41, 55, 0.9);
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-line {
+            font-size: 12px;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <header class="hero">
+        <div class="badge-row">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Behavioral & Attribution-Based Detection
+            </div>
+            <div class="badge badge-danger">
+                <span class="badge-dot-danger"></span>
+                Confidential Technical Overview (Trade Secret Methods)
+            </div>
+        </div>
+
+        <div class="super-title">Anti-Stalker Radar &middot; Framework Overview</div>
+        <h1 class="hero-title">High-Level Behavioral Stalkerware Detection Framework</h1>
+        <p class="hero-subtitle">
+            Anti-Stalker Radar is a signature-less, behavioral and attribution-based detection framework
+            designed to identify covert mobile surveillance and stalkerware by correlating identity anomalies,
+            permission clusters, lifecycle activity and multi-step behavioral sequences.
+        </p>
+        <div class="hero-meta">
+            <div><strong>Inventor:</strong> Duane Michael Romualdo (Independent Researcher)</div>
+            <div><strong>Domain:</strong> Mobile threat detection & forensic risk attribution</div>
+        </div>
+    </header>
+
+    <section class="grid" aria-label="Overview and key points">
+        <article class="card">
+            <div class="card-title-row">
+                <div class="card-title">Problem Space</div>
+                <div class="pill">Why a new approach is needed</div>
+            </div>
+            <p>
+                Modern stalkerware and covert surveillance apps are explicitly designed to evade traditional
+                mobile security models:
+            </p>
+            <ul>
+                <li>Minimal permission sets and benign-looking manifests</li>
+                <li>Obfuscation, repackaging and piggybacking on legitimate apps</li>
+                <li>SIM / identity tampering and device-level instability</li>
+                <li>Silent re-enablement, rogue updates and persistence tactics</li>
+            </ul>
+            <p>
+                Static signatures, simple permission checkers and reputation lists are no longer sufficient to
+                reliably surface these threats. What is required is a framework that reasons about
+                <strong>intent, behavior and identity context</strong> over time.
+            </p>
+            <div class="callout">
+                <strong>Goal:</strong> attribute covert surveillance behaviour using correlated signals
+                rather than chasing individual indicators of compromise.
+            </div>
+        </article>
+
+        <aside class="card">
+            <div class="card-title-row">
+                <div class="card-title">Framework Summary</div>
+                <div class="pill">High-level only</div>
+            </div>
+            <p>
+                Anti-Stalker Radar is a modular analysis layer intended to sit alongside existing
+                mobile threat defense or consumer security products and provide:
+            </p>
+            <ul>
+                <li>Behavioral watchdog and lifecycle anomaly tracking</li>
+                <li>SIM and identity instability modeling for tampering signals</li>
+                <li>Permission-cluster forensic scoring (intent-focused, not raw counts)</li>
+                <li>Event-sequence correlation and risk delta evaluation</li>
+                <li>Attribution-ready outputs for UI, policy or automated response</li>
+            </ul>
+
+            <div class="mini-section">
+                <div class="layout-title">Not a product by itself</div>
+                <p style="font-size: 13px; margin-top: 2px;">
+                    The framework is designed as an <strong>intelligence engine</strong> that can be
+                    embedded, licensed or integrated into existing mobile security stacks.
+                </p>
+            </div>
+        </aside>
+    </section>
+
+    <section>
+        <h2>Core Capabilities</h2>
+
+        <div class="layout-grid">
+            <div class="layout-card">
+                <div class="layout-title">Behavioral Watchdog</div>
+                <div class="layout-body">
+                    Continuously monitors lifecycle anomalies, hidden execution patterns,
+                    wake-lock usage, foreground service abuse and suspicious background behaviour
+                    following installation or updates.
+                </div>
+                <div class="tag-row">
+                    <span class="tag">Lifecycle anomalies</span>
+                    <span class="tag">Foreground / background abuse</span>
+                </div>
+            </div>
+
+            <div class="layout-card">
+                <div class="layout-title">Identity &amp; SIM Forensics</div>
+                <div class="layout-body">
+                    Models expected stability of SIM / identity parameters and highlights
+                    suspicious transitions, instability or inconsistencies that align with
+                    SIM-cloning, number hijack or identity manipulation scenarios.
+                </div>
+                <div class="tag-row">
+                    <span class="tag">Identity anomalies</span>
+                    <span class="tag">SIM instability</span>
+                </div>
+            </div>
+
+            <div class="layout-card">
+                <div class="layout-title">Permission-Cluster Scoring</div>
+                <div class="layout-body">
+                    Evaluates <strong>clusters</strong> of permissions as forensic indicators
+                    (e.g. audio + location + call logs) and correlates them with observed runtime
+                    behaviour rather than treating each permission in isolation.
+                </div>
+                <div class="tag-row">
+                    <span class="tag">Intent-focused scoring</span>
+                    <span class="tag">Surveillance clusters</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="layout-grid">
+            <div class="layout-card">
+                <div class="layout-title">Rogue Update &amp; Persistence</div>
+                <div class="layout-body">
+                    Tracks capability changes across install / update cycles, attempts to
+                    silently re-enable functionality after user action, and privilege
+                    expansions that do not match normal app evolution patterns.
+                </div>
+                <div class="tag-row">
+                    <span class="tag">Rogue updates</span>
+                    <span class="tag">Re-enablement attempts</span>
+                </div>
+            </div>
+
+            <div class="layout-card">
+                <div class="layout-title">Event-Sequence Attribution</div>
+                <div class="layout-body">
+                    Links low-level signals into higher-level narratives
+                    (e.g. SIM change → app re-enables itself → new background activity)
+                    and assigns risk deltas to each step to build attribution confidence.
+                </div>
+                <div class="tag-row">
+                    <span class="tag">Multi-step reasoning</span>
+                    <span class="tag">Attribution narratives</span>
+                </div>
+            </div>
+
+            <div class="layout-card">
+                <div class="layout-title">Risk Output &amp; Tiers</div>
+                <div class="layout-body">
+                    Produces tiered outputs that can integrate with existing UI / policy:
+                    lightweight flags, elevated warnings or high-confidence alerts suitable
+                    for enforcement or user guidance.
+                </div>
+                <div class="tag-row">
+                    <span class="tag">Tiered outputs</span>
+                    <span class="tag">Low noise, high signal</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Conceptual Architecture (High-Level)</h2>
+
+        <p>
+            The diagram below describes the conceptual flow of analysis. Exact implementations
+            and parameter thresholds are intentionally omitted here to protect trade secret logic.
+        </p>
+
+        <div class="layout-grid" style="margin-top: 12px;">
+            <div class="layout-card">
+                <div class="layout-title">Input Signals</div>
+                <div class="layout-body">
+                    <ul>
+                        <li>Installed app metadata and lifecycle events</li>
+                        <li>Permission sets and permission changes</li>
+                        <li>Foreground / background execution patterns</li>
+                        <li>Identity &amp; SIM stability indicators</li>
+                        <li>Network / connectivity context (high-level)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="layout-card">
+                <div class="layout-title">Analysis Layers</div>
+                <div class="layout-body">
+                    <ul>
+                        <li>Behavioral watchdog &amp; anomaly detection</li>
+                        <li>Permission-cluster modeling and scoring</li>
+                        <li>Identity anomaly &amp; instability modeling</li>
+                        <li>Event-sequence correlation &amp; risk deltas</li>
+                        <li>Persistence &amp; rogue-update fingerprinting</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="layout-card">
+                <div class="layout-title">Outputs</div>
+                <div class="layout-body">
+                    <ul>
+                        <li>Per-app risk tiers and rationale summaries</li>
+                        <li>Behavioral “red flag” categories</li>
+                        <li>Attribution-weighted confidence levels</li>
+                        <li>Signals suitable for UI, policy or API export</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="callout">
+            <span class="code-chip">Note:</span> This page provides a <strong>high-level technical overview</strong>
+            intended for security, detection engineering and product teams evaluating behavioural approaches.
+            Implementation details, tuning parameters and internal weighting models are intentionally withheld.
+        </div>
+    </section>
+
+    <section>
+        <h2>Intended Use Cases</h2>
+        <p>
+            Anti-Stalker Radar is designed as an embeddable intelligence engine that can support multiple
+            product directions, including:
+        </p>
+        <ul>
+            <li>
+                <strong>Consumer mobile anti-stalkerware:</strong>
+                surfacing covert surveillance behaviour to non-technical users with clear rationale.
+            </li>
+            <li>
+                <strong>Mobile threat defense solutions:</strong>
+                adding behavioural attribution for high-confidence spyware and control-app detection.
+            </li>
+            <li>
+                <strong>Telecom / identity protection services:</strong>
+                correlating SIM / identity anomalies with suspicious application behaviour.
+            </li>
+            <li>
+                <strong>Forensics and incident response:</strong>
+                providing behavioural timelines and risk narratives for compromised devices.
+            </li>
+        </ul>
+
+        <div class="mini-section">
+            <h3>Integration Philosophy</h3>
+            <p>
+                The framework is intentionally modular: it is designed to generate
+                <strong>explanatory signals</strong> that can be consumed by existing analytics,
+                UI and policy engines rather than replacing them.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Contact &amp; Evaluation</h2>
+        <p>
+            This overview is provided solely to give security and product teams a sense of the
+            conceptual approach and applicability of Anti-Stalker Radar as a behavioural attribution layer.
+        </p>
+        <p>
+            For discussion under appropriate confidentiality terms, technical validation, or exploration of
+            licensing / integration opportunities, please reach out directly:
+        </p>
+        <p class="contact-line">
+            <strong>Contact:</strong> Duane Michael Romualdo<br>
+            <strong>Email:</strong> <a href="mailto:drdizzle613@proton.me">drdizzle613@proton.me</a>
+        </p>
+    </section>
+
+    <footer>
+        <p>
+            This page is a high-level summary only. The underlying detection logic, correlation rules,
+            weighting strategies, and internal models that power Anti-Stalker Radar are maintained as
+            proprietary trade secrets by the inventor and are not disclosed here.
+        </p>
+        <p>
+            &copy; <span id="year"></span> Anti-Stalker Radar &middot; All rights reserved.
+        </p>
+    </footer>
+</div>
+
+<script>
+    // Simple year injection to avoid manual updates
+    document.getElementById('year').textContent = new Date().getFullYear().toString();
+</script>
+
+</body>
+</html>
