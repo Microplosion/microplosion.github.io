@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Microplosion Labs — Privacy-Focused Android Utilities</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Official site for Microplosion Labs and Cache-Plosion (Total Cache Cleaner Pro). Privacy-first Android utilities with no personal data collection and transparent Accessibility use.">
+  <meta name="description" content="Official site for Microplosion Labs. Privacy-first Android utilities and research prototypes that turn device signals into clear, human-readable explanations — with transparent disclosures and minimal data handling.">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://microplosion.github.io/">
@@ -14,7 +14,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Microplosion Labs — Privacy-Focused Android Utilities">
-  <meta property="og:description" content="Creator of Cache-Plosion (Total Cache Cleaner Pro). Privacy-first Android utilities with transparent Accessibility and no personal data collection.">
+  <meta property="og:description" content="Privacy-first Android utilities and research prototypes. Transparent disclosures, minimal permissions, and no unnecessary data collection.">
   <meta property="og:url" content="https://microplosion.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://microplosion.github.io/MicroPlosion.png">
@@ -22,13 +22,13 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Microplosion Labs — Privacy-Focused Android Utilities">
-  <meta name="twitter:description" content="Creator of Cache-Plosion (Total Cache Cleaner Pro). Privacy-first Android utilities with transparent Accessibility and no personal data collection.">
+  <meta name="twitter:description" content="Privacy-first Android utilities and research prototypes. Transparent disclosures, minimal permissions, and no unnecessary data collection.">
   <meta name="twitter:image" content="https://microplosion.github.io/MicroPlosion.png">
 
   <meta name="theme-color" content="#0d1117">
 
   <style>
-    :root { --text:#222; --muted:#555; --link:#3366cc; --maxw:720px; }
+    :root { --text:#222; --muted:#555; --link:#3366cc; --maxw:820px; --card:#f6f8fa; --border:#e5e7eb; }
     html,body{margin:0;padding:0}
     body{
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
@@ -38,20 +38,42 @@
     header{text-align:center;margin-top:1.5rem}
     header img{width:130px;height:auto;margin-bottom:.75rem;border-radius:12px}
     header h1{margin:.25rem 0 .5rem}
-    header p.lead{margin:0 auto 1.25rem;color:var(--muted);max-width:48ch}
+    header p.lead{margin:0 auto 1.25rem;color:var(--muted);max-width:58ch}
     nav{text-align:center;margin-bottom:1.5rem; line-height: 2;}
-    nav a{color:var(--link);text-decoration:none;margin:0 .5rem}
+    nav a{color:var(--link);text-decoration:none;margin:0 .5rem;white-space:nowrap}
     nav a:hover{text-decoration:underline}
-    h2{margin-top:2rem}
+    h2{margin-top:2.25rem}
     hr{border:0;border-top:1px solid #ddd;margin:2rem 0}
     ul{padding-left:1.2rem}
-    footer{text-align:center;font-size:.92rem;color:var(--muted);margin-top:2rem}
+    footer{text-align:center;font-size:.92rem;color:var(--muted);margin-top:2.5rem}
     .contact{text-align:center;margin-top:1.25rem}
     .store-link{margin-top:0.75rem}
-    .store-link a{display:inline-block;margin-top:0.25rem}
+    .store-link a{display:inline-block;margin-top:0.25rem;word-break:break-all}
+    .grid{display:grid;grid-template-columns:1fr;gap:1rem}
+    @media(min-width:780px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:1rem 1.1rem;
+    }
+    .pill{
+      display:inline-block;
+      font-size:.82rem;
+      padding:.15rem .55rem;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+      color:var(--muted);
+      margin-left:.35rem;
+      vertical-align:middle;
+    }
+    .muted{color:var(--muted)}
+    .small{font-size:.95rem}
+    .tight{margin-top:.5rem}
   </style>
 
-  <!-- Minimal structured data -->
+  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -62,16 +84,33 @@
     "contactPoint":[{"@type":"ContactPoint","contactType":"support","email":"drdizzle613@proton.me"}]
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"Cache-Plosion (Total Cache Cleaner Pro)",
+    "operatingSystem":"Android",
+    "applicationCategory":"UtilitiesApplication",
+    "publisher":{"@type":"Organization","name":"Microplosion Labs"},
+    "downloadUrl":"https://play.google.com/store/apps/details?id=com.microplosion.cacheplosion",
+    "url":"https://microplosion.github.io/",
+    "description":"A lightweight cache-cleaner utility. Uses Accessibility only to automate user-initiated cache clearing actions, with transparent disclosures and minimal data handling."
+  }
+  </script>
 </head>
 <body>
 
   <header>
     <img src="/MicroPlosion.png" alt="Microplosion Labs logo">
     <h1>Microplosion Labs</h1>
-    <p class="lead">Privacy-focused Android utilities. Creator of <strong>Cache-Plosion (Total Cache Cleaner Pro)</strong>.</p>
+    <p class="lead">
+      Privacy-focused Android utilities and research prototypes.<br>
+      Minimal permissions, transparent disclosures, and no unnecessary data collection.
+    </p>
   </header>
 
-  <!-- 🔗 Updated Navigation With ALL Pages -->
+  <!-- 🔗 Navigation -->
   <nav aria-label="Site links">
     <a href="/privacy-policy.html">Privacy Policy</a>
     <a href="/accessibility-disclosure.html">Accessibility Disclosure</a>
@@ -82,47 +121,92 @@
     <a href="/terms.html">Terms of Use</a>
   </nav>
 
-  <h2>About Microplosion Labs</h2>
-  <p>Microplosion Labs builds small, fast, privacy-focused Android utilities. Our apps avoid unnecessary data collection, use minimal permissions, and focus on clear user value.</p>
-  <ul>
-    <li><strong>Privacy-first:</strong> no personal or sensitive data is collected or stored.</li>
-    <li><strong>Performance-focused:</strong> lightweight builds with low battery impact.</li>
-    <li><strong>Policy-compliant:</strong> clear disclosures for Accessibility, permissions, and data handling.</li>
-  </ul>
-
-  <hr>
-
-  <h2>Cache-Plosion (Total Cache Cleaner Pro)</h2>
+  <h2>What we build</h2>
   <p>
-    Cache-Plosion is a lightweight cache cleaner that helps free up storage by clearing cached data from your installed apps.
-    It uses the Android Accessibility Service only to automate “Clear cache” actions that <strong>you</strong> initiate, and it does not read the contents of your apps, your screen, or personal files.
+    Microplosion Labs builds small, fast, privacy-first Android tools — plus advanced security research prototypes focused on
+    <strong>behavioral interpretation</strong> and <strong>explainable device signals</strong>.
   </p>
 
-  <ul>
-    <li><strong>Deep cache cleaning:</strong> Automates “Storage &amp; cache → Clear cache”.</li>
-    <li><strong>No root required:</strong> Works on all standard Android devices.</li>
-    <li><strong>User-controlled:</strong> Cleaning runs only when you start it.</li>
-  </ul>
+  <div class="grid" role="list">
 
-  <p>
-    For full technical details, see our
-    <a href="/accessibility-disclosure.html">Accessibility Service Disclosure</a>.
-  </p>
+    <section class="card" role="listitem" aria-label="Cache-Plosion product card">
+      <h3 style="margin:.1rem 0 .4rem">Cache-Plosion (Total Cache Cleaner Pro) <span class="pill">Available</span></h3>
+      <p class="tight">
+        A lightweight cache cleaner that helps free storage by automating “Storage &amp; cache → Clear cache” actions that <strong>you</strong> initiate.
+        It uses the Android Accessibility Service only for user-started automation and does not read the contents of your apps, your screen, or personal files.
+      </p>
+      <ul class="small">
+        <li><strong>Deep cache cleaning:</strong> automates the steps you would otherwise tap manually.</li>
+        <li><strong>No root required:</strong> works on standard Android devices.</li>
+        <li><strong>User-controlled:</strong> runs only when you start it.</li>
+      </ul>
+      <p class="small">
+        Full details: <a href="/accessibility-disclosure.html">Accessibility Service Disclosure</a>
+      </p>
+      <div class="store-link">
+        <strong>Google Play:</strong><br>
+        <a href="https://play.google.com/store/apps/details?id=com.microplosion.cacheplosion">
+          https://play.google.com/store/apps/details?id=com.microplosion.cacheplosion
+        </a>
+      </div>
+    </section>
 
-  <div class="store-link">
-    <strong>Get Cache-Plosion on Google Play:</strong><br>
-    <a href="https://play.google.com/store/apps/details?id=com.microplosion.cacheplosion">
-      https://play.google.com/store/apps/details?id=com.microplosion.cacheplosion
-    </a>
+    <section class="card" role="listitem" aria-label="Anti-Stalker Radar research card">
+      <h3 style="margin:.1rem 0 .4rem">Anti-Stalker Radar <span class="pill">Research / Evaluation</span></h3>
+      <p class="tight">
+        Anti-Stalker Radar is a behavioral security research prototype designed to <strong>connect weak signals over time</strong>
+        and translate them into <strong>human-readable explanations</strong>.
+      </p>
+      <ul class="small">
+        <li><strong>Behavioral correlation:</strong> links low-confidence events into higher-confidence narratives.</li>
+        <li><strong>Evidence interpretation layer (BEIL):</strong> produces structured explanations (not just alerts).</li>
+        <li><strong>Confidence context:</strong> highlights why a conclusion is stronger or weaker, plus limitations.</li>
+      </ul>
+      <p class="small muted">
+        Note: This is not legal advice and not a substitute for professional forensic examination. Outputs are informational and may include uncertainty.
+      </p>
+    </section>
+
   </div>
 
   <hr>
 
-  <h2>Support &amp; Contact</h2>
-  <p>If you have questions about Cache-Plosion, permissions, or privacy, you can reach the developer directly.</p>
+  <h2>Behavioral Evidence Interpretation Layer (BEIL)</h2>
+  <p>
+    Many tools can raise an alert. Fewer can explain <em>why it matters</em> in plain language.
+    BEIL is an interpretation layer that converts correlated device signals into a structured, readable output that can be reviewed later.
+  </p>
+  <div class="card" aria-label="BEIL summary card">
+    <p class="tight"><strong>BEIL output focuses on:</strong></p>
+    <ul class="small">
+      <li><strong>Timeframe &amp; timeline:</strong> what happened first, what followed, and why order matters.</li>
+      <li><strong>Observed signals:</strong> the key events used for interpretation (with minimal sensitive content).</li>
+      <li><strong>Interpretation:</strong> a clear explanation written for non-technical readers.</li>
+      <li><strong>Confidence &amp; rationale:</strong> what raised/lowered confidence, plus limitations and caveats.</li>
+      <li><strong>Alternative explanations:</strong> benign possibilities considered, and why they may be less likely.</li>
+    </ul>
+    <p class="small muted">
+      BEIL is designed to be additive: it operates on the outputs of a correlation engine rather than changing the underlying signal collection logic.
+    </p>
+  </div>
+
+  <hr>
+
+  <h2>Privacy &amp; transparency</h2>
+  <ul>
+    <li><strong>Privacy-first:</strong> no unnecessary personal or sensitive data collection.</li>
+    <li><strong>Minimal permissions:</strong> only what’s required for the stated feature.</li>
+    <li><strong>Clear disclosures:</strong> Accessibility and package visibility usage are documented on this site.</li>
+    <li><strong>User control:</strong> automation or analysis runs only when you initiate it.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Support &amp; contact</h2>
+  <p>If you have questions about Cache-Plosion, permissions, privacy, or disclosures, you can reach the developer directly.</p>
   <div class="contact">
     <p>Email: <a href="mailto:drdizzle613@proton.me">drdizzle613@proton.me</a></p>
-    <p>You may include your device model and Android version for faster support.</p>
+    <p class="muted small">Tip: Include your device model and Android version for faster support.</p>
   </div>
 
   <footer>
@@ -133,7 +217,7 @@
       <a href="/query-all-packages-disclosure.html">Package Visibility Disclosure</a> ·
       <a href="/terms.html">Terms</a>
     </p>
-    <p>This site is for information and support only. Google Play and Android are trademarks of Google LLC.</p>
+    <p class="muted">This site is for information and support only. Google Play and Android are trademarks of Google LLC.</p>
   </footer>
 
   <script>
