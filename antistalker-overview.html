@@ -337,7 +337,7 @@
         <p class="hero-subtitle">
             Anti-Stalker Radar is a signature-less, behavioral and attribution-based detection framework
             designed to identify covert mobile surveillance and stalkerware by correlating identity anomalies,
-            permission clusters, lifecycle activity and multi-step behavioral sequences.
+            permission clusters, lifecycle activity and multi-step behavioral sequences — and surfacing the result as a structured evidence interpretation output.
         </p>
         <div class="hero-meta">
             <div><strong>Inventor:</strong> Duane Michael Romualdo (Independent Researcher)</div>
@@ -386,7 +386,7 @@
                 <li>SIM and identity instability modeling for tampering signals</li>
                 <li>Permission-cluster forensic scoring (intent-focused, not raw counts)</li>
                 <li>Event-sequence correlation and risk delta evaluation</li>
-                <li>Attribution-ready outputs for UI, policy or automated response</li>
+                <li>Attribution-ready outputs for UI, policy or automated response (including structured evidence interpretations)</li>
             </ul>
 
             <div class="mini-section">
@@ -536,9 +536,56 @@
         <div class="callout">
             <span class="code-chip">Note:</span> This page provides a <strong>high-level technical overview</strong>
             intended for security, detection engineering and product teams evaluating behavioural approaches.
-            Implementation details, tuning parameters and internal weighting models are intentionally withheld.
+            Implementation details, tuning parameters and internal weighting models are intentionally withheld. BEIL operates on top of existing outputs and does not modify the underlying signal collection logic.
+        </div>
+    
+    <section>
+        <h2>Behavioral Evidence Interpretation Layer (BEIL)</h2>
+
+        <p>
+            Detection is not the hardest part anymore — <em>explanation</em> is.
+            Anti-Stalker Radar includes an interpretation layer that converts correlated device signals into a
+            structured, human-readable evidence output designed for non-technical review.
+        </p>
+
+        <div class="card" style="margin-top: 12px;">
+            <div class="card-title-row">
+                <div class="card-title">What BEIL produces</div>
+                <div class="pill">Structured evidence output</div>
+            </div>
+            <ul>
+                <li><strong>Timeframe &amp; timeline:</strong> what happened first, what followed, and why sequence matters.</li>
+                <li><strong>Observed signals (high-level):</strong> the minimum set of events used for interpretation.</li>
+                <li><strong>Interpretation narrative:</strong> a plain-language explanation of the behavioral pattern.</li>
+                <li><strong>Confidence context:</strong> what raised/lowered confidence, plus known limitations.</li>
+                <li><strong>Alternative explanations:</strong> benign possibilities considered and why they may be less likely.</li>
+            </ul>
+
+            <div class="callout" style="margin-top: 10px;">
+                <strong>Design intent:</strong> BEIL is additive. It operates on the outputs of correlation and scoring layers
+                without changing underlying collection logic.
+            </div>
+        </div>
+
+        <div class="mini-section">
+            <h3>Evidence vs. Alerts</h3>
+            <p>
+                Alerts are designed to prompt attention. Evidence output is designed to survive outside the moment:
+                it is readable later, reviewable by a third party, and consistent in structure.
+            </p>
+        </div>
+
+        <div class="mini-section">
+            <h3>Output Safety &amp; Boundaries</h3>
+            <p>
+                BEIL outputs are informational and may include uncertainty. They are not legal advice and are not a substitute
+                for a professional forensic examination.
+                Exact internal weighting, thresholds, and tuning parameters are intentionally omitted from this page to protect trade secrets.
+            </p>
         </div>
     </section>
+
+</section>
 
     <section>
         <h2>Intended Use Cases</h2>
