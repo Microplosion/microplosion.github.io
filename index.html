@@ -175,6 +175,7 @@ p{font-size:1.2rem;line-height:1.7;color:#c9d4df;margin:0 0 18px}
   <div class="share-panel" id="sharePanel">
     <p class="share-title">Share this page</p>
     <div class="share-buttons">
+      <button class="share-btn full" id="nativeShareBtn" type="button">Share via apps</button>
       <a class="share-btn" id="shareEmail" href="#" target="_blank" rel="noopener">Email</a>
       <a class="share-btn" id="shareFacebook" href="#" target="_blank" rel="noopener">Facebook</a>
       <a class="share-btn" id="shareLinkedIn" href="#" target="_blank" rel="noopener">LinkedIn</a>
@@ -221,6 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var pageUrl = window.location.href;
   var shareTitle = document.title;
   var shareText = 'See what most security stacks still miss.';
+  var isMobile = window.matchMedia('(max-width: 700px)').matches;
 
   var emailBtn = document.getElementById('shareEmail');
   var facebookBtn = document.getElementById('shareFacebook');
@@ -229,10 +231,13 @@ document.addEventListener('DOMContentLoaded', function() {
   var copyBtn = document.getElementById('copyLinkBtn');
   var copyStatus = document.getElementById('copyStatus');
   var panel = document.getElementById('sharePanel');
-  var shareButtons = document.querySelector('.share-buttons');
+  var nativeShareBtn = document.getElementById('nativeShareBtn');
+  var shareToggle = document.getElementById('shareToggle');
 
   if (emailBtn) {
-    emailBtn.href = 'mailto:?subject=' + encodeURIComponent(shareTitle) + '&body=' + encodeURIComponent(shareText + '\n\n' + pageUrl);
+    emailBtn.href = 'mailto:?subject=' + encodeURIComponent(shareTitle) + '&body=' + encodeURIComponent(shareText + '
+
+' + pageUrl);
   }
 
   if (facebookBtn) {
@@ -243,11 +248,42 @@ document.addEventListener('DOMContentLoaded', function() {
     linkedInBtn.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(pageUrl);
   }
 
+  if (navigator.share && nativeShareBtn) {
+    nativeShareBtn.style.display = 'flex';
+    nativeShareBtn.addEventListener('click', function(event) {
+      event.preventDefault();
+      navigator.share({
+        title: shareTitle,
+        text: shareText,
+        url: pageUrl
+      }).then(function() {
+        closeShareMenu();
+      }).catch(function() {});
+    });
+  } else if (nativeShareBtn) {
+    nativeShareBtn.style.display = 'none';
+  }
+
+  if (shareToggle && isMobile && navigator.share) {
+    shareToggle.textContent = 'Share via apps';
+    shareToggle.onclick = function(event) {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      navigator.share({
+        title: shareTitle,
+        text: shareText,
+        url: pageUrl
+      }).catch(function() {});
+    };
+  }
+
   if (instagramBtn) {
     instagramBtn.addEventListener('click', function(event) {
       event.preventDefault();
       if (copyStatus) {
-        copyStatus.textContent = 'Instagram does not support direct webpage sharing. Copy the link and paste it into your bio, DM, or story workflow.';
+        copyStatus.textContent = 'Instagram does not support direct webpage sharing. Use Copy Link, then paste it into your bio, DM, or story workflow.';
       }
     });
   }
@@ -277,18 +313,6 @@ document.addEventListener('DOMContentLoaded', function() {
     panel.addEventListener('click', function(event) {
       event.stopPropagation();
     });
-  }
-
-  if (navigator.share && shareButtons) {
-    var nativeBtn = document.createElement('button');
-    nativeBtn.type = 'button';
-    nativeBtn.className = 'share-btn full';
-    nativeBtn.textContent = 'More Share Options';
-    nativeBtn.addEventListener('click', function(event) {
-      event.preventDefault();
-      navigator.share({ title: shareTitle, text: shareText, url: pageUrl }).catch(function(){});
-    });
-    shareButtons.appendChild(nativeBtn);
   }
 });
 </script>
