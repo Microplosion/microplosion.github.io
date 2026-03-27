@@ -31,7 +31,9 @@ p{font-size:1.2rem;line-height:1.7;color:#c9d4df;margin:0 0 18px}
 .share-toggle{display:flex;align-items:center;gap:10px;padding:14px 18px;border-radius:999px;background:#5be0ff;color:#000;font-size:1rem;font-weight:800;box-shadow:0 14px 40px rgba(91,224,255,0.28)}
 .copy-status{font-size:.82rem;color:#8feaff;margin-top:8px;min-height:18px}
 @media (max-width:700px){.share-widget{right:12px;bottom:12px}.share-panel{min-width:200px}.share-buttons{grid-template-columns:1fr}}
-.kicker{display:inline-block;padding:10px 16px;border:1px solid rgba(91,224,255,0.18);border-radius:999px;color:#8feaff;background:rgba(91,224,255,0.08);font-size:.95rem;margin-bottom:22px}
+.kicker{display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border:1px solid rgba(91,224,255,0.22);border-radius:999px;color:#8feaff;background:rgba(91,224,255,0.08);font-size:.95rem;margin-bottom:22px;letter-spacing:.5px}
+.kicker strong{color:#ffffff;font-weight:800}
+.kicker span{opacity:.85}
 .visual-grid{display:grid;grid-template-columns:1fr 120px 1fr;gap:20px;align-items:stretch;margin-top:18px}
 .visual-card{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:24px}
 .visual-card h3{margin:0 0 18px;font-size:1.25rem}
@@ -53,7 +55,7 @@ p{font-size:1.2rem;line-height:1.7;color:#c9d4df;margin:0 0 18px}
 <div class="container">
 
 <div class="hero">
-<div class="kicker">Behavioral Attribution Engine</div>
+<div class="kicker"><strong>TraceIQ</strong><span>Behavioral Attribution Engine</span></div>
 <h1>Your stack can inspect every event and still miss the attack.</h1>
 <p class="big">That is the blind spot. Modern threats do not look dangerous in isolation. They look normal until behavior is connected across time.</p>
 <p class="share-quote">What looks benign event by event can become dangerous when the full chain is finally visible.</p>
