@@ -192,35 +192,56 @@ p{font-size:1.2rem;line-height:1.7;color:#c9d4df;margin:0 0 18px}
   const sharePanel = document.getElementById('sharePanel');
   const copyBtn = document.getElementById('copyLinkBtn');
   const copyStatus = document.getElementById('copyStatus');
+  const shareButtons = document.querySelector('.share-buttons');
+
+  if (!shareToggle || !sharePanel || !copyBtn || !copyStatus || !shareButtons) {
+    return;
+  }
+
   const pageUrl = window.location.href;
   const shareTitle = document.title;
   const shareText = 'See what most security stacks still miss.';
 
-  document.getElementById('shareEmail').href =
-    'mailto:?subject=' + encodeURIComponent(shareTitle) +
-    '&body=' + encodeURIComponent(shareText + '
+  const emailBtn = document.getElementById('shareEmail');
+  const facebookBtn = document.getElementById('shareFacebook');
+  const linkedInBtn = document.getElementById('shareLinkedIn');
+  const instagramBtn = document.getElementById('shareInstagram');
+
+  if (emailBtn) {
+    emailBtn.href = 'mailto:?subject=' + encodeURIComponent(shareTitle) + '&body=' + encodeURIComponent(shareText + '
 
 ' + pageUrl);
+  }
 
-  document.getElementById('shareFacebook').href =
-    'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(pageUrl);
+  if (facebookBtn) {
+    facebookBtn.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(pageUrl);
+  }
 
-  document.getElementById('shareLinkedIn').href =
-    'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(pageUrl);
+  if (linkedInBtn) {
+    linkedInBtn.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(pageUrl);
+  }
 
-  document.getElementById('shareInstagram').href = 'https://www.instagram.com/';
-  document.getElementById('shareInstagram').addEventListener('click', function(){
-    copyStatus.textContent = 'Instagram does not support direct web-page sharing. Copy the link and paste it into your bio, DM, or story tools.';
-  });
+  if (instagramBtn) {
+    instagramBtn.href = '#';
+    instagramBtn.addEventListener('click', function(event){
+      event.preventDefault();
+      copyStatus.textContent = 'Instagram does not support direct webpage sharing. Use Copy Link, then paste it into your bio, DM, or story workflow.';
+      sharePanel.classList.add('open');
+    });
+  }
 
-  shareToggle.addEventListener('click', function(){
+  shareToggle.addEventListener('click', function(event){
+    event.preventDefault();
+    event.stopPropagation();
     sharePanel.classList.toggle('open');
   });
 
-  document.addEventListener('click', function(event){
-    if (!event.target.closest('.share-widget')) {
-      sharePanel.classList.remove('open');
-    }
+  sharePanel.addEventListener('click', function(event){
+    event.stopPropagation();
+  });
+
+  document.addEventListener('click', function(){
+    sharePanel.classList.remove('open');
   });
 
   copyBtn.addEventListener('click', async function(){
@@ -228,7 +249,17 @@ p{font-size:1.2rem;line-height:1.7;color:#c9d4df;margin:0 0 18px}
       await navigator.clipboard.writeText(pageUrl);
       copyStatus.textContent = 'Link copied to clipboard.';
     } catch (err) {
-      copyStatus.textContent = 'Copy failed. Please copy the URL from your browser bar.';
+      const helper = document.createElement('textarea');
+      helper.value = pageUrl;
+      document.body.appendChild(helper);
+      helper.select();
+      try {
+        document.execCommand('copy');
+        copyStatus.textContent = 'Link copied to clipboard.';
+      } catch (copyErr) {
+        copyStatus.textContent = 'Copy failed. Please copy the URL from your browser bar.';
+      }
+      document.body.removeChild(helper);
     }
   });
 
@@ -237,12 +268,13 @@ p{font-size:1.2rem;line-height:1.7;color:#c9d4df;margin:0 0 18px}
     nativeBtn.type = 'button';
     nativeBtn.className = 'share-btn full';
     nativeBtn.textContent = 'More Share Options';
-    nativeBtn.addEventListener('click', async function(){
+    nativeBtn.addEventListener('click', async function(event){
+      event.preventDefault();
       try {
         await navigator.share({ title: shareTitle, text: shareText, url: pageUrl });
       } catch (err) {}
     });
-    document.querySelector('.share-buttons').appendChild(nativeBtn);
+    shareButtons.appendChild(nativeBtn);
   }
 })();
 </script>
