@@ -7,17 +7,32 @@
 
 <style>
 body{margin:0;font-family:Inter,sans-serif;background:#030812;color:#fff}
-.container{max-width:1000px;margin:auto;padding:60px 20px}
-h1{font-size:3.5rem;line-height:1.1}
-h2{font-size:2.2rem;margin-top:80px}
-p{font-size:1.2rem;line-height:1.7;color:#c9d4df}
-.highlight{color:#5be0ff;font-weight:bold}
+.container{max-width:1100px;margin:auto;padding:60px 20px}
+h1{font-size:3.7rem;line-height:1.05;margin-bottom:16px}
+h2{font-size:2.2rem;margin-top:80px;margin-bottom:16px}
+p{font-size:1.2rem;line-height:1.7;color:#c9d4df;margin:0 0 18px}
+.highlight{color:#5be0ff;font-weight:700}
 .hero{text-align:center;margin-top:40px}
-.big{font-size:1.5rem;color:#9fb3c8}
-.box{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:30px;border-radius:18px;margin-top:25px}
-.sequence li{margin-bottom:12px}
-.cta{margin-top:100px;padding:50px;text-align:center;background:linear-gradient(135deg,#0a1f35,#123a5a);border-radius:24px}
-.cta a{display:inline-block;margin-top:25px;padding:16px 32px;background:#5be0ff;color:#000;font-weight:bold;border-radius:999px;text-decoration:none;font-size:1.1rem}
+.big{font-size:1.5rem;color:#9fb3c8;max-width:850px;margin:0 auto}
+.box{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:30px;border-radius:18px;margin-top:25px;box-shadow:0 0 0 1px rgba(91,224,255,0.02),0 30px 80px rgba(0,0,0,0.28)}
+.sequence{padding-left:20px;margin:0 0 20px}
+.sequence li{margin-bottom:12px;color:#d9e3ed;font-size:1.08rem}
+.cta{margin-top:100px;padding:50px;text-align:center;background:linear-gradient(135deg,#0a1f35,#123a5a);border-radius:24px;border:1px solid rgba(255,255,255,0.08)}
+.cta a{display:inline-block;margin-top:25px;padding:16px 32px;background:#5be0ff;color:#000;font-weight:700;border-radius:999px;text-decoration:none;font-size:1.1rem}
+.kicker{display:inline-block;padding:10px 16px;border:1px solid rgba(91,224,255,0.18);border-radius:999px;color:#8feaff;background:rgba(91,224,255,0.08);font-size:.95rem;margin-bottom:22px}
+.visual-grid{display:grid;grid-template-columns:1fr 120px 1fr;gap:20px;align-items:stretch;margin-top:18px}
+.visual-card{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:24px}
+.visual-card h3{margin:0 0 18px;font-size:1.25rem}
+.signal-row,.result-row{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;margin-bottom:12px;border-radius:14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);font-size:1.05rem;color:#dce6f0}
+.signal-ok{color:#8dffb1;font-weight:700}
+.arrow-stack{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;color:#5be0ff;font-weight:700;font-size:1rem;text-align:center}
+.arrow-circle{width:78px;height:78px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at center, rgba(91,224,255,0.22), rgba(91,224,255,0.06));border:1px solid rgba(91,224,255,0.22);font-size:2rem;box-shadow:0 0 30px rgba(91,224,255,0.12)}
+.result-safe{color:#8dffb1;font-weight:800}
+.result-danger{color:#ff6f91;font-weight:800}
+.share-quote{font-size:1.55rem;line-height:1.45;color:#fff;text-align:center;max-width:900px;margin:20px auto 0;font-weight:700}
+.share-sub{font-size:1.15rem;text-align:center;color:#9fb3c8;max-width:860px;margin:18px auto 0}
+.punch{font-size:1.35rem;color:#fff;font-weight:700}
+@media (max-width:900px){.visual-grid{grid-template-columns:1fr;}.arrow-stack{padding:8px 0}.arrow-circle{transform:rotate(90deg)}h1{font-size:3rem}.big{font-size:1.3rem}}
 </style>
 </head>
 
@@ -25,78 +40,71 @@ p{font-size:1.2rem;line-height:1.7;color:#c9d4df}
 <div class="container">
 
 <div class="hero">
+<div class="kicker">Behavioral Attribution Engine</div>
 <h1>You Are Not Missing Threats Because Your Tools Are Bad</h1>
 <p class="big">You are missing them because they are invisible to your current model.</p>
+<p class="share-quote">Most security stacks can inspect the events and still miss the attack.</p>
+<p class="share-sub">That is the blind spot. Not bad tooling. Not bad analysts. A broken model for how modern threats actually appear.</p>
 </div>
 
 <h2>Here’s The Reality No One Talks About</h2>
 <div class="box">
-<p>
-Modern attacks are not loud.
-</p>
-<p>
-They do not trigger alerts.
-</p>
-<p>
-They do not look malicious.
-</p>
-
-<p class="highlight">
-They look completely normal.
-</p>
-
+<p>Modern attacks are not loud.</p>
+<p>They do not trigger alerts.</p>
+<p>They do not look malicious.</p>
+<p class="highlight">They look completely normal.</p>
 <ul class="sequence">
 <li>• A permission change</li>
 <li>• A UI overlay</li>
 <li>• Microphone activity</li>
 <li>• A small network request</li>
 </ul>
+<p>Your system sees four unrelated events.</p>
+<p class="highlight">An attacker sees a working surveillance chain.</p>
+</div>
 
-<p>
-Your system sees four unrelated events.
-</p>
-
-<p class="highlight">
-An attacker sees a working surveillance chain.
-</p>
+<h2>The Screenshot People Will Remember</h2>
+<div class="box">
+<p class="punch">Everything below can pass through a traditional detection stack without looking dangerous.</p>
+<div class="visual-grid">
+<div class="visual-card">
+<h3>What the stack sees</h3>
+<div class="signal-row"><span>Permission granted</span><span class="signal-ok">✓ Allowed</span></div>
+<div class="signal-row"><span>Overlay appears</span><span class="signal-ok">✓ Normal</span></div>
+<div class="signal-row"><span>Microphone activates</span><span class="signal-ok">✓ No alert</span></div>
+<div class="signal-row"><span>Small network request</span><span class="signal-ok">✓ Benign</span></div>
+<div class="result-row"><span>System verdict</span><span class="result-safe">SAFE</span></div>
+</div>
+<div class="arrow-stack">
+<div class="arrow-circle">→</div>
+<div>Same events<br>Different model</div>
+</div>
+<div class="visual-card">
+<h3>What TraceIQ sees</h3>
+<div class="signal-row"><span>Step 1 linked to Step 2</span><span class="highlight">Sequence</span></div>
+<div class="signal-row"><span>Overlay linked to mic use</span><span class="highlight">Context</span></div>
+<div class="signal-row"><span>Mic use linked to data transfer</span><span class="highlight">Behavior</span></div>
+<div class="signal-row"><span>Full chain reconstructed</span><span class="highlight">Meaning</span></div>
+<div class="result-row"><span>TraceIQ verdict</span><span class="result-danger">ACTIVE SURVEILLANCE</span></div>
+</div>
+</div>
+<p class="share-quote">This is how covert surveillance can happen without triggering a single meaningful alert.</p>
 </div>
 
 <h2>This Is The Blind Spot</h2>
 <div class="box">
-<p>
-Every major security platform answers this question:
-</p>
-
-<p class="highlight">
-“Is this event malicious?”
-</p>
-
-<p>
-But real attacks don’t live inside a single event.
-</p>
-
-<p class="highlight">
-They live in the relationship between events.
-</p>
+<p>Every major security platform answers this question:</p>
+<p class="highlight">“Is this event malicious?”</p>
+<p>But real attacks do not live inside a single event.</p>
+<p class="highlight">They live in the relationship between events.</p>
 </div>
 
 <h2>This Is What TraceIQ Does</h2>
 <div class="box">
-<p class="highlight">
-TraceIQ reconstructs behavior across time.
-</p>
-
-<p>
-It connects signals your tools treat as unrelated.
-</p>
-
-<p>
-It detects sequences, not snapshots.
-</p>
-
-<p class="highlight">
-It shows you what is actually happening.
-</p>
+<p class="highlight">TraceIQ reconstructs behavior across time.</p>
+<p>It connects signals your tools treat as unrelated.</p>
+<p>It detects sequences, not snapshots.</p>
+<p class="highlight">It shows you what is actually happening.</p>
 </div>
 
 <h2>Real Example (What Your Stack Misses)</h2>
@@ -107,15 +115,9 @@ It shows you what is actually happening.
 <li>Step 3 → Microphone activates in background</li>
 <li>Step 4 → Data leaves device</li>
 </ul>
-
-<p>
-Traditional tools:
-</p>
-<p class="highlight">No alert</p>
-
-<p>
-TraceIQ:
-</p>
+<p>Traditional tools:</p>
+<p class="highlight">No alert. No clear narrative. No understanding of the chain.</p>
+<p>TraceIQ:</p>
 <p class="highlight">“Covert surveillance behavior detected”</p>
 </div>
 
@@ -127,25 +129,15 @@ TraceIQ:
 <li>• Reveals intent, not just activity</li>
 <li>• Explains why something is dangerous</li>
 </ul>
-
-<p class="highlight">
-This is not another detection tool.
-</p>
-
-<p class="highlight">
-This is a new layer of understanding.
-</p>
+<p class="highlight">This is not another detection tool.</p>
+<p class="highlight">This is a new layer of understanding.</p>
 </div>
 
 <h2>The Bottom Line</h2>
 <div class="box">
-<p>
-If your system cannot connect behavior across time,
-</p>
-
-<p class="highlight">
-it cannot see modern attacks.
-</p>
+<p>If your system cannot connect behavior across time,</p>
+<p class="highlight">it cannot see modern attacks.</p>
+<p class="highlight">Most security stacks today still have this blind spot.</p>
 </div>
 
 <div class="cta">
@@ -157,7 +149,6 @@ It works.
 <br><br>
 And it exposes a blind spot most security stacks still have.
 </p>
-
 <a href="mailto:your@email.com">Request Private Demo</a>
 </div>
 
