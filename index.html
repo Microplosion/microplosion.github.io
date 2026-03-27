@@ -1,241 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TraceIQ | Behavioral Attribution Engine</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TraceIQ | See What Others Miss</title>
 
-  <style>
-    body { margin:0; font-family: Inter, sans-serif; background:#040a12; color:#ffffff; }
-    .container { max-width: 1000px; margin:auto; padding:50px 20px; }
-
-    h1 { font-size:3.2rem; margin-bottom:10px; }
-    h2 { font-size:2rem; margin-top:70px; }
-
-    p { font-size:1.2rem; line-height:1.7; color:#c7d3e0; }
-
-    .highlight { color:#5be0ff; font-weight:bold; }
-
-    .hero { text-align:center; margin-top:40px; }
-
-    .big { font-size:1.6rem; color:#9fb6cc; }
-
-    .divider { height:1px; background:rgba(255,255,255,0.08); margin:60px 0; }
-
-    .box {
-      background: rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.08);
-      padding:28px;
-      border-radius:18px;
-      margin-top:25px;
-    }
-
-    .sequence li { margin-bottom:12px; font-size:1.1rem; }
-
-    .cta {
-      margin-top:80px;
-      padding:40px;
-      text-align:center;
-      background: linear-gradient(135deg,#0a1f35,#123a5a);
-      border-radius:24px;
-    }
-
-    .cta a {
-      display:inline-block;
-      margin-top:25px;
-      padding:16px 30px;
-      background:#5be0ff;
-      color:black;
-      font-weight:bold;
-      border-radius:999px;
-      text-decoration:none;
-      font-size:1.1rem;
-    }
-
-  </style>
+<style>
+body{margin:0;font-family:Inter,sans-serif;background:#030812;color:#fff}
+.container{max-width:1000px;margin:auto;padding:60px 20px}
+h1{font-size:3.5rem;line-height:1.1}
+h2{font-size:2.2rem;margin-top:80px}
+p{font-size:1.2rem;line-height:1.7;color:#c9d4df}
+.highlight{color:#5be0ff;font-weight:bold}
+.hero{text-align:center;margin-top:40px}
+.big{font-size:1.5rem;color:#9fb3c8}
+.box{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:30px;border-radius:18px;margin-top:25px}
+.sequence li{margin-bottom:12px}
+.cta{margin-top:100px;padding:50px;text-align:center;background:linear-gradient(135deg,#0a1f35,#123a5a);border-radius:24px}
+.cta a{display:inline-block;margin-top:25px;padding:16px 32px;background:#5be0ff;color:#000;font-weight:bold;border-radius:999px;text-decoration:none;font-size:1.1rem}
+</style>
 </head>
-<body>
 
+<body>
 <div class="container">
 
-  <div class="hero">
-    <h1>This Is What Your Security Stack Can’t See</h1>
-    <p class="big">And it’s where the real risk lives.</p>
-  </div>
-
-  <div class="divider"></div>
-
-  <p>
-    Every major security platform today is built on the same assumption:
-  </p>
-
-  <p class="highlight">
-    If something is dangerous, it will look dangerous.
-  </p>
-
-  <p>
-    That assumption is no longer true.
-  </p>
-
-  <h2>The Reality</h2>
-
-  <div class="box">
-    <p>
-      Modern attacks don’t break systems.
-    </p>
-
-    <p>
-      They move quietly through them.
-    </p>
-
-    <p>
-      They are:
-    </p>
-
-    <ul class="sequence">
-      <li>• Low signal</li>
-      <li>• Distributed across time</li>
-      <li>• Designed to look normal in isolation</li>
-    </ul>
-
-    <p class="highlight">
-      Nothing triggers. Nothing fires. Nothing gets flagged.
-    </p>
-  </div>
-
-  <h2>The Blind Spot</h2>
-
-  <div class="box">
-    <p>
-      Your tools see events.
-    </p>
-
-    <p>
-      They do not see behavior.
-    </p>
-
-    <p>
-      Example:
-    </p>
-
-    <ul class="sequence">
-      <li>• Permission granted</li>
-      <li>• Overlay appears</li>
-      <li>• Microphone activates</li>
-      <li>• Data leaves device</li>
-    </ul>
-
-    <p>
-      Individually:
-    </p>
-
-    <p class="highlight">
-      Not suspicious.
-    </p>
-
-    <p>
-      Together:
-    </p>
-
-    <p class="highlight">
-      Covert surveillance.
-    </p>
-  </div>
-
-  <h2>This Is The Missing Layer</h2>
-
-  <div class="box">
-    <p class="highlight">
-      TraceIQ reconstructs behavior.
-    </p>
-
-    <p>
-      It connects events across time.
-    </p>
-
-    <p>
-      It identifies sequences that traditional detection models miss.
-    </p>
-
-    <p>
-      It answers the question your stack cannot:
-    </p>
-
-    <p class="highlight">
-      “What is actually happening?”
-    </p>
-  </div>
-
-  <h2>What Makes This Different</h2>
-
-  <div class="box">
-    <ul class="sequence">
-      <li>• Not signature-based</li>
-      <li>• Not rule-based</li>
-      <li>• Not dependent on known threats</li>
-    </ul>
-
-    <p>
-      It is built on behavioral attribution.
-    </p>
-
-    <p class="highlight">
-      It detects the story unfolding, not just the signal.
-    </p>
-  </div>
-
-  <h2>Why This Matters Now</h2>
-
-  <div class="box">
-    <p>
-      AI-driven attacks, insider misuse, and stealth surveillance all share one trait:
-    </p>
-
-    <p class="highlight">
-      They hide inside normal behavior.
-    </p>
-
-    <p>
-      The gap is no longer detection.
-    </p>
-
-    <p class="highlight">
-      The gap is interpretation.
-    </p>
-  </div>
-
-  <h2>The Opportunity</h2>
-
-  <div class="box">
-    <p>
-      Every major security company is investing billions in detection.
-    </p>
-
-    <p>
-      Very few are solving this layer.
-    </p>
-
-    <p class="highlight">
-      This is a category-defining capability.
-    </p>
-
-    <p>
-      And it integrates directly into existing stacks.
-    </p>
-  </div>
-
-  <div class="cta">
-    <h2>This Is Not A Concept</h2>
-    <p>
-      This is a working behavioral attribution system.
-      <br><br>
-      Built. Tested. Ready for evaluation.
-    </p>
-
-    <a href="mailto:your@email.com">Request Private Demo</a>
-  </div>
-
+<div class="hero">
+<h1>You Are Not Missing Threats Because Your Tools Are Bad</h1>
+<p class="big">You are missing them because they are invisible to your current model.</p>
 </div>
 
+<h2>Here’s The Reality No One Talks About</h2>
+<div class="box">
+<p>
+Modern attacks are not loud.
+</p>
+<p>
+They do not trigger alerts.
+</p>
+<p>
+They do not look malicious.
+</p>
+
+<p class="highlight">
+They look completely normal.
+</p>
+
+<ul class="sequence">
+<li>• A permission change</li>
+<li>• A UI overlay</li>
+<li>• Microphone activity</li>
+<li>• A small network request</li>
+</ul>
+
+<p>
+Your system sees four unrelated events.
+</p>
+
+<p class="highlight">
+An attacker sees a working surveillance chain.
+</p>
+</div>
+
+<h2>This Is The Blind Spot</h2>
+<div class="box">
+<p>
+Every major security platform answers this question:
+</p>
+
+<p class="highlight">
+“Is this event malicious?”
+</p>
+
+<p>
+But real attacks don’t live inside a single event.
+</p>
+
+<p class="highlight">
+They live in the relationship between events.
+</p>
+</div>
+
+<h2>This Is What TraceIQ Does</h2>
+<div class="box">
+<p class="highlight">
+TraceIQ reconstructs behavior across time.
+</p>
+
+<p>
+It connects signals your tools treat as unrelated.
+</p>
+
+<p>
+It detects sequences, not snapshots.
+</p>
+
+<p class="highlight">
+It shows you what is actually happening.
+</p>
+</div>
+
+<h2>Real Example (What Your Stack Misses)</h2>
+<div class="box">
+<ul class="sequence">
+<li>Step 1 → App gains permission</li>
+<li>Step 2 → Overlay appears</li>
+<li>Step 3 → Microphone activates in background</li>
+<li>Step 4 → Data leaves device</li>
+</ul>
+
+<p>
+Traditional tools:
+</p>
+<p class="highlight">No alert</p>
+
+<p>
+TraceIQ:
+</p>
+<p class="highlight">“Covert surveillance behavior detected”</p>
+</div>
+
+<h2>Why This Changes Everything</h2>
+<div class="box">
+<ul class="sequence">
+<li>• Detects what signature systems cannot</li>
+<li>• Works on unknown threats</li>
+<li>• Reveals intent, not just activity</li>
+<li>• Explains why something is dangerous</li>
+</ul>
+
+<p class="highlight">
+This is not another detection tool.
+</p>
+
+<p class="highlight">
+This is a new layer of understanding.
+</p>
+</div>
+
+<h2>The Bottom Line</h2>
+<div class="box">
+<p>
+If your system cannot connect behavior across time,
+</p>
+
+<p class="highlight">
+it cannot see modern attacks.
+</p>
+</div>
+
+<div class="cta">
+<h2>This Already Exists</h2>
+<p>
+TraceIQ is built.
+<br><br>
+It works.
+<br><br>
+And it exposes a blind spot most security stacks still have.
+</p>
+
+<a href="mailto:your@email.com">Request Private Demo</a>
+</div>
+
+</div>
 </body>
 </html>
