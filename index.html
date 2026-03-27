@@ -1,228 +1,241 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Microplosion Labs — Privacy-Focused Android Utilities</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Official site for Microplosion Labs. Privacy-first Android utilities and research prototypes that turn device signals into clear, human-readable explanations — with transparent disclosures and minimal data handling.">
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://microplosion.github.io/">
-
-  <!-- Favicons -->
-  <link rel="icon" href="/MicroPlosion.png" type="image/png">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Microplosion Labs — Privacy-Focused Android Utilities">
-  <meta property="og:description" content="Privacy-first Android utilities and research prototypes. Transparent disclosures, minimal permissions, and no unnecessary data collection.">
-  <meta property="og:url" content="https://microplosion.github.io/">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://microplosion.github.io/MicroPlosion.png">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Microplosion Labs — Privacy-Focused Android Utilities">
-  <meta name="twitter:description" content="Privacy-first Android utilities and research prototypes. Transparent disclosures, minimal permissions, and no unnecessary data collection.">
-  <meta name="twitter:image" content="https://microplosion.github.io/MicroPlosion.png">
-
-  <meta name="theme-color" content="#0d1117">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TraceIQ | Behavioral Attribution Engine</title>
 
   <style>
-    :root { --text:#222; --muted:#555; --link:#3366cc; --maxw:820px; --card:#f6f8fa; --border:#e5e7eb; }
-    html,body{margin:0;padding:0}
-    body{
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol",sans-serif;
-      color:var(--text);line-height:1.6;max-width:var(--maxw);
-      margin:2rem auto;padding:1rem;background:#fff
+    body { margin:0; font-family: Inter, sans-serif; background:#040a12; color:#ffffff; }
+    .container { max-width: 1000px; margin:auto; padding:50px 20px; }
+
+    h1 { font-size:3.2rem; margin-bottom:10px; }
+    h2 { font-size:2rem; margin-top:70px; }
+
+    p { font-size:1.2rem; line-height:1.7; color:#c7d3e0; }
+
+    .highlight { color:#5be0ff; font-weight:bold; }
+
+    .hero { text-align:center; margin-top:40px; }
+
+    .big { font-size:1.6rem; color:#9fb6cc; }
+
+    .divider { height:1px; background:rgba(255,255,255,0.08); margin:60px 0; }
+
+    .box {
+      background: rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      padding:28px;
+      border-radius:18px;
+      margin-top:25px;
     }
-    header{text-align:center;margin-top:1.5rem}
-    header img{width:130px;height:auto;margin-bottom:.75rem;border-radius:12px}
-    header h1{margin:.25rem 0 .5rem}
-    header p.lead{margin:0 auto 1.25rem;color:var(--muted);max-width:58ch}
-    nav{text-align:center;margin-bottom:1.5rem; line-height: 2;}
-    nav a{color:var(--link);text-decoration:none;margin:0 .5rem;white-space:nowrap}
-    nav a:hover{text-decoration:underline}
-    h2{margin-top:2.25rem}
-    hr{border:0;border-top:1px solid #ddd;margin:2rem 0}
-    ul{padding-left:1.2rem}
-    footer{text-align:center;font-size:.92rem;color:var(--muted);margin-top:2.5rem}
-    .contact{text-align:center;margin-top:1.25rem}
-    .store-link{margin-top:0.75rem}
-    .store-link a{display:inline-block;margin-top:0.25rem;word-break:break-all}
-    .grid{display:grid;grid-template-columns:1fr;gap:1rem}
-    @media(min-width:780px){ .grid{grid-template-columns:1fr 1fr} }
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:1rem 1.1rem;
+
+    .sequence li { margin-bottom:12px; font-size:1.1rem; }
+
+    .cta {
+      margin-top:80px;
+      padding:40px;
+      text-align:center;
+      background: linear-gradient(135deg,#0a1f35,#123a5a);
+      border-radius:24px;
     }
-    .pill{
+
+    .cta a {
       display:inline-block;
-      font-size:.82rem;
-      padding:.15rem .55rem;
+      margin-top:25px;
+      padding:16px 30px;
+      background:#5be0ff;
+      color:black;
+      font-weight:bold;
       border-radius:999px;
-      border:1px solid var(--border);
-      background:#fff;
-      color:var(--muted);
-      margin-left:.35rem;
-      vertical-align:middle;
+      text-decoration:none;
+      font-size:1.1rem;
     }
-    .muted{color:var(--muted)}
-    .small{font-size:.95rem}
-    .tight{margin-top:.5rem}
+
   </style>
-
-  <!-- Structured data -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Microplosion Labs",
-    "url":"https://microplosion.github.io/",
-    "logo":"https://microplosion.github.io/MicroPlosion.png",
-    "contactPoint":[{"@type":"ContactPoint","contactType":"support","email":"drdizzle613@proton.me"}]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"SoftwareApplication",
-    "name":"Cache-Plosion (Total Cache Cleaner Pro)",
-    "operatingSystem":"Android",
-    "applicationCategory":"UtilitiesApplication",
-    "publisher":{"@type":"Organization","name":"Microplosion Labs"},
-    "downloadUrl":"https://play.google.com/store/apps/details?id=com.microplosion.cacheplosion",
-    "url":"https://microplosion.github.io/",
-    "description":"A lightweight cache-cleaner utility. Uses Accessibility only to automate user-initiated cache clearing actions, with transparent disclosures and minimal data handling."
-  }
-  </script>
 </head>
 <body>
 
-  <header>
-    <img src="/MicroPlosion.png" alt="Microplosion Labs logo">
-    <h1>Microplosion Labs</h1>
-    <p class="lead">
-      Privacy-focused Android utilities and research prototypes.<br>
-      Minimal permissions, transparent disclosures, and no unnecessary data collection.
-    </p>
-  </header>
+<div class="container">
 
-  <!-- 🔗 Navigation -->
-  <nav aria-label="Site links">
-    <a href="/privacy-policy.html">Privacy Policy</a>
-    <a href="/accessibility-disclosure.html">Accessibility Disclosure</a>
-    <a href="/query-all-packages-disclosure.html">QUERY_ALL_PACKAGES Disclosure</a>
-    <a href="/help.html">Help &amp; Support</a>
-    <a href="/help-permissions.html">Permissions Help</a>
-    <a href="/support.html">Contact Support</a>
-    <a href="/terms.html">Terms of Use</a>
-  </nav>
+  <div class="hero">
+    <h1>This Is What Your Security Stack Can’t See</h1>
+    <p class="big">And it’s where the real risk lives.</p>
+  </div>
 
-  <h2>What we build</h2>
+  <div class="divider"></div>
+
   <p>
-    Microplosion Labs builds small, fast, privacy-first Android tools — plus advanced security research prototypes focused on
-    <strong>behavioral interpretation</strong> and <strong>explainable device signals</strong>.
+    Every major security platform today is built on the same assumption:
   </p>
 
-  <div class="grid" role="list">
-
-    <section class="card" role="listitem" aria-label="Cache-Plosion product card">
-      <h3 style="margin:.1rem 0 .4rem">Cache-Plosion (Total Cache Cleaner Pro) <span class="pill">Available</span></h3>
-      <p class="tight">
-        A lightweight cache cleaner that helps free storage by automating “Storage &amp; cache → Clear cache” actions that <strong>you</strong> initiate.
-        It uses the Android Accessibility Service only for user-started automation and does not read the contents of your apps, your screen, or personal files.
-      </p>
-      <ul class="small">
-        <li><strong>Deep cache cleaning:</strong> automates the steps you would otherwise tap manually.</li>
-        <li><strong>No root required:</strong> works on standard Android devices.</li>
-        <li><strong>User-controlled:</strong> runs only when you start it.</li>
-      </ul>
-      <p class="small">
-        Full details: <a href="/accessibility-disclosure.html">Accessibility Service Disclosure</a>
-      </p>
-      <div class="store-link">
-        <strong>Google Play:</strong><br>
-        <a href="https://play.google.com/store/apps/details?id=com.microplosion.cacheplosion">
-          https://play.google.com/store/apps/details?id=com.microplosion.cacheplosion
-        </a>
-      </div>
-    </section>
-
-    <section class="card" role="listitem" aria-label="Anti-Stalker Radar research card">
-      <h3 style="margin:.1rem 0 .4rem">Anti-Stalker Radar <span class="pill">Research / Evaluation</span></h3>
-      <p class="tight">
-        Anti-Stalker Radar is a behavioral security research prototype designed to <strong>connect weak signals over time</strong>
-        and translate them into <strong>human-readable explanations</strong>.
-      </p>
-      <ul class="small">
-        <li><strong>Behavioral correlation:</strong> links low-confidence events into higher-confidence narratives.</li>
-        <li><strong>Evidence interpretation layer (BEIL):</strong> produces structured explanations (not just alerts).</li>
-        <li><strong>Confidence context:</strong> highlights why a conclusion is stronger or weaker, plus limitations.</li>
-      </ul>
-      <p class="small muted">
-        Note: This is not legal advice and not a substitute for professional forensic examination. Outputs are informational and may include uncertainty.
-      </p>
-    </section>
-
-  </div>
-
-  <hr>
-
-  <h2>Behavioral Evidence Interpretation Layer (BEIL)</h2>
-  <p>
-    Many tools can raise an alert. Fewer can explain <em>why it matters</em> in plain language.
-    BEIL is an interpretation layer that converts correlated device signals into a structured, readable output that can be reviewed later.
+  <p class="highlight">
+    If something is dangerous, it will look dangerous.
   </p>
-  <div class="card" aria-label="BEIL summary card">
-    <p class="tight"><strong>BEIL output focuses on:</strong></p>
-    <ul class="small">
-      <li><strong>Timeframe &amp; timeline:</strong> what happened first, what followed, and why order matters.</li>
-      <li><strong>Observed signals:</strong> the key events used for interpretation (with minimal sensitive content).</li>
-      <li><strong>Interpretation:</strong> a clear explanation written for non-technical readers.</li>
-      <li><strong>Confidence &amp; rationale:</strong> what raised/lowered confidence, plus limitations and caveats.</li>
-      <li><strong>Alternative explanations:</strong> benign possibilities considered, and why they may be less likely.</li>
-    </ul>
-    <p class="small muted">
-      BEIL is designed to be additive: it operates on the outputs of a correlation engine rather than changing the underlying signal collection logic.
-    </p>
-  </div>
 
-  <hr>
+  <p>
+    That assumption is no longer true.
+  </p>
 
-  <h2>Privacy &amp; transparency</h2>
-  <ul>
-    <li><strong>Privacy-first:</strong> no unnecessary personal or sensitive data collection.</li>
-    <li><strong>Minimal permissions:</strong> only what’s required for the stated feature.</li>
-    <li><strong>Clear disclosures:</strong> Accessibility and package visibility usage are documented on this site.</li>
-    <li><strong>User control:</strong> automation or analysis runs only when you initiate it.</li>
-  </ul>
+  <h2>The Reality</h2>
 
-  <hr>
-
-  <h2>Support &amp; contact</h2>
-  <p>If you have questions about Cache-Plosion, permissions, privacy, or disclosures, you can reach the developer directly.</p>
-  <div class="contact">
-    <p>Email: <a href="mailto:drdizzle613@proton.me">drdizzle613@proton.me</a></p>
-    <p class="muted small">Tip: Include your device model and Android version for faster support.</p>
-  </div>
-
-  <footer>
-    <p>&copy; <span id="year"></span> Microplosion Labs. All rights reserved.</p>
+  <div class="box">
     <p>
-      <a href="/privacy-policy.html">Privacy Policy</a> ·
-      <a href="/accessibility-disclosure.html">Accessibility Disclosure</a> ·
-      <a href="/query-all-packages-disclosure.html">Package Visibility Disclosure</a> ·
-      <a href="/terms.html">Terms</a>
+      Modern attacks don’t break systems.
     </p>
-    <p class="muted">This site is for information and support only. Google Play and Android are trademarks of Google LLC.</p>
-  </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <p>
+      They move quietly through them.
+    </p>
+
+    <p>
+      They are:
+    </p>
+
+    <ul class="sequence">
+      <li>• Low signal</li>
+      <li>• Distributed across time</li>
+      <li>• Designed to look normal in isolation</li>
+    </ul>
+
+    <p class="highlight">
+      Nothing triggers. Nothing fires. Nothing gets flagged.
+    </p>
+  </div>
+
+  <h2>The Blind Spot</h2>
+
+  <div class="box">
+    <p>
+      Your tools see events.
+    </p>
+
+    <p>
+      They do not see behavior.
+    </p>
+
+    <p>
+      Example:
+    </p>
+
+    <ul class="sequence">
+      <li>• Permission granted</li>
+      <li>• Overlay appears</li>
+      <li>• Microphone activates</li>
+      <li>• Data leaves device</li>
+    </ul>
+
+    <p>
+      Individually:
+    </p>
+
+    <p class="highlight">
+      Not suspicious.
+    </p>
+
+    <p>
+      Together:
+    </p>
+
+    <p class="highlight">
+      Covert surveillance.
+    </p>
+  </div>
+
+  <h2>This Is The Missing Layer</h2>
+
+  <div class="box">
+    <p class="highlight">
+      TraceIQ reconstructs behavior.
+    </p>
+
+    <p>
+      It connects events across time.
+    </p>
+
+    <p>
+      It identifies sequences that traditional detection models miss.
+    </p>
+
+    <p>
+      It answers the question your stack cannot:
+    </p>
+
+    <p class="highlight">
+      “What is actually happening?”
+    </p>
+  </div>
+
+  <h2>What Makes This Different</h2>
+
+  <div class="box">
+    <ul class="sequence">
+      <li>• Not signature-based</li>
+      <li>• Not rule-based</li>
+      <li>• Not dependent on known threats</li>
+    </ul>
+
+    <p>
+      It is built on behavioral attribution.
+    </p>
+
+    <p class="highlight">
+      It detects the story unfolding, not just the signal.
+    </p>
+  </div>
+
+  <h2>Why This Matters Now</h2>
+
+  <div class="box">
+    <p>
+      AI-driven attacks, insider misuse, and stealth surveillance all share one trait:
+    </p>
+
+    <p class="highlight">
+      They hide inside normal behavior.
+    </p>
+
+    <p>
+      The gap is no longer detection.
+    </p>
+
+    <p class="highlight">
+      The gap is interpretation.
+    </p>
+  </div>
+
+  <h2>The Opportunity</h2>
+
+  <div class="box">
+    <p>
+      Every major security company is investing billions in detection.
+    </p>
+
+    <p>
+      Very few are solving this layer.
+    </p>
+
+    <p class="highlight">
+      This is a category-defining capability.
+    </p>
+
+    <p>
+      And it integrates directly into existing stacks.
+    </p>
+  </div>
+
+  <div class="cta">
+    <h2>This Is Not A Concept</h2>
+    <p>
+      This is a working behavioral attribution system.
+      <br><br>
+      Built. Tested. Ready for evaluation.
+    </p>
+
+    <a href="mailto:your@email.com">Request Private Demo</a>
+  </div>
+
+</div>
 
 </body>
 </html>
