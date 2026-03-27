@@ -19,6 +19,18 @@ p{font-size:1.2rem;line-height:1.7;color:#c9d4df;margin:0 0 18px}
 .sequence li{margin-bottom:12px;color:#d9e3ed;font-size:1.08rem}
 .cta{margin-top:100px;padding:50px;text-align:center;background:linear-gradient(135deg,#0a1f35,#123a5a);border-radius:24px;border:1px solid rgba(255,255,255,0.08)}
 .cta a{display:inline-block;margin-top:25px;padding:16px 32px;background:#5be0ff;color:#000;font-weight:700;border-radius:999px;text-decoration:none;font-size:1.1rem}
+.share-widget{position:fixed;right:18px;bottom:18px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.share-panel{display:none;min-width:220px;background:rgba(7,18,32,0.96);border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:14px;box-shadow:0 20px 60px rgba(0,0,0,0.35);backdrop-filter:blur(10px)}
+.share-panel.open{display:block}
+.share-title{font-size:.95rem;font-weight:700;color:#fff;margin:0 0 10px}
+.share-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.share-btn,.share-toggle{border:none;cursor:pointer;font-family:inherit}
+.share-btn{display:flex;align-items:center;justify-content:center;padding:12px 14px;border-radius:14px;text-decoration:none;background:rgba(255,255,255,0.05);color:#fff;font-size:.95rem;font-weight:600;border:1px solid rgba(255,255,255,0.08);transition:.2s ease}
+.share-btn:hover,.share-toggle:hover{transform:translateY(-1px)}
+.share-btn.full{grid-column:1 / -1}
+.share-toggle{display:flex;align-items:center;gap:10px;padding:14px 18px;border-radius:999px;background:#5be0ff;color:#000;font-size:1rem;font-weight:800;box-shadow:0 14px 40px rgba(91,224,255,0.28)}
+.copy-status{font-size:.82rem;color:#8feaff;margin-top:8px;min-height:18px}
+@media (max-width:700px){.share-widget{right:12px;bottom:12px}.share-panel{min-width:200px}.share-buttons{grid-template-columns:1fr}}
 .kicker{display:inline-block;padding:10px 16px;border:1px solid rgba(91,224,255,0.18);border-radius:999px;color:#8feaff;background:rgba(91,224,255,0.08);font-size:.95rem;margin-bottom:22px}
 .visual-grid{display:grid;grid-template-columns:1fr 120px 1fr;gap:20px;align-items:stretch;margin-top:18px}
 .visual-card{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:24px}
@@ -33,6 +45,7 @@ p{font-size:1.2rem;line-height:1.7;color:#c9d4df;margin:0 0 18px}
 .share-sub{font-size:1.15rem;text-align:center;color:#9fb3c8;max-width:860px;margin:18px auto 0}
 .punch{font-size:1.35rem;color:#fff;font-weight:700}
 @media (max-width:900px){.visual-grid{grid-template-columns:1fr;}.arrow-stack{padding:8px 0}.arrow-circle{transform:rotate(90deg)}h1{font-size:3rem}.big{font-size:1.3rem}}
+@media (max-width:520px){h1{font-size:2.4rem}h2{font-size:1.8rem}.container{padding:42px 16px}}
 </style>
 </head>
 
@@ -41,10 +54,10 @@ p{font-size:1.2rem;line-height:1.7;color:#c9d4df;margin:0 0 18px}
 
 <div class="hero">
 <div class="kicker">Behavioral Attribution Engine</div>
-<h1>You Are Not Missing Threats Because Your Tools Are Bad</h1>
-<p class="big">You are missing them because they are invisible to your current model.</p>
-<p class="share-quote">Most security stacks can inspect the events and still miss the attack.</p>
-<p class="share-sub">That is the blind spot. Not bad tooling. Not bad analysts. A broken model for how modern threats actually appear.</p>
+<h1>Your stack can inspect every event and still miss the attack.</h1>
+<p class="big">That is the blind spot. Modern threats do not look dangerous in isolation. They look normal until behavior is connected across time.</p>
+<p class="share-quote">What looks benign event by event can become dangerous when the full chain is finally visible.</p>
+<p class="share-sub">TraceIQ is built to reconstruct that chain so teams can see what traditional detection models often miss.</p>
 </div>
 
 <h2>Here’s The Reality No One Talks About</h2>
@@ -63,7 +76,7 @@ p{font-size:1.2rem;line-height:1.7;color:#c9d4df;margin:0 0 18px}
 <p class="highlight">An attacker sees a working surveillance chain.</p>
 </div>
 
-<h2>The Screenshot People Will Remember</h2>
+<h2>Look closely — nothing here triggers an alert</h2>
 <div class="box">
 <p class="punch">Everything below can pass through a traditional detection stack without looking dangerous.</p>
 <div class="visual-grid">
@@ -155,5 +168,81 @@ p{font-size:1.2rem;line-height:1.7;color:#c9d4df;margin:0 0 18px}
 </div>
 
 </div>
+
+<div class="share-widget">
+  <div class="share-panel" id="sharePanel">
+    <p class="share-title">Share this page</p>
+    <div class="share-buttons">
+      <a class="share-btn" id="shareEmail" href="#" target="_blank" rel="noopener">Email</a>
+      <a class="share-btn" id="shareFacebook" href="#" target="_blank" rel="noopener">Facebook</a>
+      <a class="share-btn" id="shareLinkedIn" href="#" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="share-btn" id="shareInstagram" href="#" target="_blank" rel="noopener">Instagram</a>
+      <button class="share-btn full" id="copyLinkBtn" type="button">Copy Link</button>
+    </div>
+    <div class="copy-status" id="copyStatus"></div>
+  </div>
+  <button class="share-toggle" id="shareToggle" type="button">Share</button>
+</div>
+
+<script>
+(function(){
+  const shareToggle = document.getElementById('shareToggle');
+  const sharePanel = document.getElementById('sharePanel');
+  const copyBtn = document.getElementById('copyLinkBtn');
+  const copyStatus = document.getElementById('copyStatus');
+  const pageUrl = window.location.href;
+  const shareTitle = document.title;
+  const shareText = 'See what most security stacks still miss.';
+
+  document.getElementById('shareEmail').href =
+    'mailto:?subject=' + encodeURIComponent(shareTitle) +
+    '&body=' + encodeURIComponent(shareText + '
+
+' + pageUrl);
+
+  document.getElementById('shareFacebook').href =
+    'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(pageUrl);
+
+  document.getElementById('shareLinkedIn').href =
+    'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(pageUrl);
+
+  document.getElementById('shareInstagram').href = 'https://www.instagram.com/';
+  document.getElementById('shareInstagram').addEventListener('click', function(){
+    copyStatus.textContent = 'Instagram does not support direct web-page sharing. Copy the link and paste it into your bio, DM, or story tools.';
+  });
+
+  shareToggle.addEventListener('click', function(){
+    sharePanel.classList.toggle('open');
+  });
+
+  document.addEventListener('click', function(event){
+    if (!event.target.closest('.share-widget')) {
+      sharePanel.classList.remove('open');
+    }
+  });
+
+  copyBtn.addEventListener('click', async function(){
+    try {
+      await navigator.clipboard.writeText(pageUrl);
+      copyStatus.textContent = 'Link copied to clipboard.';
+    } catch (err) {
+      copyStatus.textContent = 'Copy failed. Please copy the URL from your browser bar.';
+    }
+  });
+
+  if (navigator.share) {
+    const nativeBtn = document.createElement('button');
+    nativeBtn.type = 'button';
+    nativeBtn.className = 'share-btn full';
+    nativeBtn.textContent = 'More Share Options';
+    nativeBtn.addEventListener('click', async function(){
+      try {
+        await navigator.share({ title: shareTitle, text: shareText, url: pageUrl });
+      } catch (err) {}
+    });
+    document.querySelector('.share-buttons').appendChild(nativeBtn);
+  }
+})();
+</script>
 </body>
 </html>
